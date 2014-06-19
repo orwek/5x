@@ -2,7 +2,7 @@
 ==
 
 Browser games for mobile devices based on a 5x5 grid.
-This project will also be the primary test for the andi framework. (www.github.com/orwek/andi)
+This project will also be the primary test for the **andi** framework (www.github.com/orwek/andi).
 
 
 Games in Development
