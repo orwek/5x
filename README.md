@@ -8,15 +8,20 @@ This project will also be the primary test for the **andi** framework (www.githu
 Games in Development
 --
 
--Real Time Strategy (A free Warcraft-like experience)
+-JS-Craft (A miniature RTS, Warcraft-like experience)
 
--Tower Defense (Modeled after Bloons TD)
+-JS-Defense (Modeled after Bloons TD)
 
--Turn Based Strategy (A space conquest game)
+-JS2000 (A space conquest game, Turn Based Strategy)
 
--Role Playing Game (Zelda like experience)
+-Jelda (RPG, Zelda-like experience)
 
--Territory Control (Similar to Slay or HexSlayer)
+-JS-Slayer (Territory Control, Similar to Slay or HexSlayer)
+
+-Wumpus (Slim port of TI 99/4a- Hunt The Wumpus) **in dev**
+
+-Clues (Based on the Parker Brothers board game Clue)
+
 
 Games Completed
 --
