@@ -5,7 +5,7 @@ Browser games for mobile devices based on a 5x5 grid.
 This project will also be the primary test for the **andi** framework (www.github.com/orwek/andi).
 
 
-Games in Development
+Games Planned
 --
 
 -JS-Craft (A miniature RTS, Warcraft-like experience)
@@ -18,9 +18,13 @@ Games in Development
 
 -JS-Slayer (Territory Control, Similar to Slay or HexSlayer)
 
--Wumpus (Slim port of TI 99/4a- Hunt The Wumpus) **in dev**
-
 -Clues (Based on the Parker Brothers board game Clue)
+
+
+Games in Development
+--
+
+-Wumpus (Slim port of TI 99/4a- Hunt The Wumpus)
 
 
 Games Completed
