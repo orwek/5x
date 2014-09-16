@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Wumpus</title>
+<meta name="viewport" content= "width=device-width,initial-scale=1.0" />
+<style type="text/css">
+body {
+margin: 0;
+padding: 0;
+background-color: #999999;
+}
+.center {
+margin: auto;
+}
+.nav {
+width: auto;
+height: 50px;
+color: #ffffff;
+background-color: #000000;
+text-align: left;
+font-size: 20px;
+position: relative;
+vertical-align: center;
+margin-bottom: 25px;
+line-height: 50px;
+padding-left: 10px;
+}
+.nav div {
+float: left;
+font-size: 14px;
+}
+.nav .item {
+font-size: 40px;
+margin-left: 4%;
+font-weight: bold;
+}
+.row {
+width: auto;
+clear: both;
+margin-bottom: 5%;
+}
+.btn {
+background-color: #e7e7e7;
+padding: 0%;
+text-align: center;
+font-size: 30px;
+float: left;
+margin: 1px;
+border-radius: 5px;
+border-bottom: 2px solid #000000;
+border-right: 2px solid #000000;
+}
+#log {
+color: red;
+margin : 15px;
+padding: 10px;
+font-size : 20px;
+height : 150px;
+overflow : scroll;
+background-color : #e7e7e7;
+}
+.cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
+float: none;
+width: 94%;
+padding: 3%;
+}
+.cell {
+clear: both;
+}
+.half {
+width: 45% !important;
+float: left;
+}
+.third {
+width: 35% !important;
+float: left;
+}
+.quarter{
+width: 18%;
+float: left;
+}
+@media all and (min-width: 400px) {
+.cell {
+float : left;
+}
+
+.cell25 {
+float: left;
+width: 19%;
+padding: 3%;
+}
+.cell30 {
+float: left;
+width: 24%;
+padding: 3%;
+}
+.cell40 {
+float: left;
+width: 34%;
+padding: 3%;
+}
+.cell50 {
+float: left;
+width: 44%;
+padding: 3%;
+}
+.cell60 {
+float: left;
+width: 54%;
+padding: 3%;
+}
+.cell75 {
+float: left;
+width: 69%;
+padding: 3%;
+}
+}
+#console {
+display : none;
+}
+.con {
+font-size : 30px;
+float : left;
+height : 50px;
+}
+.right {
+float: right;
+}
+.left {
+float: left;
+}
+.clear {
+clear: both;
+}
+
+/* wumpus styles */
+#cave {
+height: 250px;
+width: 250px;
+background-color: #000000;
+margin: auto;
+}
+.cavern {
+width: 44px;
+height: 39px;
+margin: 3px 3px;
+background-color: #777777;
+float: left;
+position: relative;
+overflow: hidden;
+text-align: center;
+font-size: 30px;
+line-height: 30px;
+color: white;
+padding-top: 5px;
+}
+.cavern2 {
+background-color: #000000;
+}
+#control {
+}
+#menu {
+font-size: 16px;
+padding: 5% 0%;
+}
+#menu .btn {
+width: 90%;
+font-size: 16px;
+padding: 5%
+}
+.corner {
+width: 50px;
+height: 50px;
+border-radius: 25px;
+position: absolute;
+background-color: #777777;
+}
+.ne {
+top: -20px;
+left: 20px;
+}
+.sw {
+top: 20px;
+left: -20px;
+}
+.wall {
+width: 10px;
+height: 10px;
+position: absolute;
+baxkground-color: #000000;
+z-index: 2;
+}
+.sw_wall {
+bottom: 10px;
+left: 0px;
+}
+.blood {
+width: 30px;
+height: 30px;
+border-radius: 15px;
+background-color:#ff0033;
+position: absolute;
+top: 7px;
+left: 7px;
+}
+.slime {
+width: 30px;
+height: 15px;
+background-color: #11ff00;
+position: absolute;
+bottom: 0px;
+left: 7px;
+}
+.pit {
+width: 30px;
+height: 30px;
+border-radius: 15px;
+background-color:#11ff00;
+position: absolute;
+top: 7px;
+left: 7px;
+}
+</style>
+</head>
+<body>
+<div id="menu" class="row cell75 center" style="display: none;">
+<div class="right" onclick= "wmp.menu()">X</div>
+<div style="padding: 5%; font-weight: bold;" >Memoir Media- Wumpus</div> 
+
+<div class="btn">new game</div>
+<div class="btn">show map</div>
+<div class="btn">help</div>
+</div>
+
+<!-- game screen -->
+
+<!--
+	z-index
+	************
+	5- bat
+	4- hunter
+	3- wumpus
+	2- slime
+	1- blood
+	0- pit
+-->
+
+<div class="center row" style="width: 95%">
+<div class="cell60 center">
+<div id="cave">
+	<div class="cavern">
+		<div class="blood">
+		</div>
+	</div>
+	<div class="cavern">
+		<div class="slime">
+		</div>
+	</div>
+	<div class="cavern">
+		<div class="bat">
+			&Psi;
+		</div>
+	</div>
+	<div class="cavern">
+		<div class="wumpus">
+			&Omega;
+		</div>
+	</div>
+	<div class="cavern cavern2">
+		<div class="corner ne">
+		</div>
+		<div class="corner sw">
+			<div class="wall sw_wall">
+			</div>
+		</div>
+	</div>
+	<div class="cavern">
+		<div class="hunter">
+			&spades;
+		</div>
+	</div>
+	<div class="cavern">
+		<div class="pit">
+		</div>
+	</div>
+</div> 
+</div>
+<div id="control" class="cell40 center">
+<div id="up" class="btn cell40 quarter" onclick= "wmp.move('up');"> &uarr;
+</div>
+<div id="down" class="btn cell40 quarter" onclick= "wmp.move('down');"> &darr;
+</div>
+<br style="clear: both;" />
+<div id="left" class="btn cell40 quarter" onclick= "wmp.move('left');"> &larr;
+</div>
+<div id="right" class="btn cell40 quarter" onclick= "wmp.move('right');"> &rarr;
+</div>
+<div id="down" class="btn cell40 quarter" onclick= "wmp.shoot();"> &sext;
+</div>
+<div id="down" class="btn cell40 quarter" onclick= "wmp.menu();"> &equiv;
+</div>
+</div>
+
+
+<div id="console" class="row cell75">
+<div id="log"></div>
+	<script>
+	// andi
+	// Written by Kendall Purser
+	// 2014.06.01
+
+
+	// ***get function***
+	var a = { 
+		get : function (id) {
+			var temp_id = document.getElementById(id);
+			return temp_id;
+		},
+		// ***log function***
+		log : function (msg) {
+			a.show("console");
+			var temp = a.get("log").innerHTML;
+			a.get("log").innerHTML = msg + "<br /> " + temp;
+		} ,
+
+		// ***css interactoons***
+		css : function (id,key_val) {
+			for (i in key_val) {
+				a.get(id).style[i] = key_val[i];
+			}
+		},
+		show : function (id) {
+			a.css(id, {"display":"block"});
+		},
+		hide : function (id) {
+			a.css(id, {"display":"none"});
+		} 
+	};
+	// ***browser errors***
+	window.onerror = function ( msg, url, num, col, obj) {
+	a.log("Error- " + msg + "(" + num + ", " + col + ") <br /> " + url + " " + obj);
+	};
+
+	</script>
+	<script>
+	var wmp = {
+		menu_vis : 0,
+		menu : function () {
+			if (wmp.menu_vis === 0) {
+				a.show("menu");
+				wmp.menu_vis = 1;
+			} else {
+				a.hide("menu");
+				wmp.menu_vis = 0;
+			}
+		},
+		shoot: function () {
+
+		}
+	};
+
+	</script>
+</body>
+</html>
