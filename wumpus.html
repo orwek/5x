@@ -5,14 +5,17 @@
 <title>Wumpus</title>
 <meta name="viewport" content= "width=device-width,initial-scale=1.0" />
 <style type="text/css">
+
 body {
 margin: 0;
 padding: 0;
 background-color: #999999;
 }
+
 .center {
 margin: auto;
 }
+
 .nav {
 width: auto;
 height: 50px;
@@ -26,20 +29,24 @@ margin-bottom: 25px;
 line-height: 50px;
 padding-left: 10px;
 }
+
 .nav div {
 float: left;
 font-size: 14px;
 }
+
 .nav .item {
 font-size: 40px;
 margin-left: 4%;
 font-weight: bold;
 }
+
 .row {
 width: auto;
 clear: both;
 margin-bottom: 5%;
 }
+
 .btn {
 background-color: #e7e7e7;
 padding: 0%;
@@ -51,6 +58,7 @@ border-radius: 5px;
 border-bottom: 2px solid #000000;
 border-right: 2px solid #000000;
 }
+
 #log {
 color: red;
 margin : 15px;
@@ -60,78 +68,94 @@ height : 150px;
 overflow : scroll;
 background-color : #e7e7e7;
 }
+
 .cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
 float: none;
 width: 94%;
 padding: 3%;
 }
+
 .cell {
 clear: both;
 }
+
 .half {
 width: 45% !important;
 float: left;
 }
+
 .third {
 width: 35% !important;
 float: left;
 }
-.quarter{
+
+.quarter {
 width: 18%;
 float: left;
 }
-@media all and (min-width: 400px) {
-.cell {
-float : left;
-}
 
-.cell25 {
-float: left;
-width: 19%;
-padding: 3%;
-}
-.cell30 {
-float: left;
-width: 24%;
-padding: 3%;
-}
-.cell40 {
-float: left;
-width: 34%;
-padding: 3%;
-}
-.cell50 {
-float: left;
-width: 44%;
-padding: 3%;
-}
-.cell60 {
-float: left;
-width: 54%;
-padding: 3%;
-}
-.cell75 {
-float: left;
-width: 69%;
-padding: 3%;
-}
-}
-#console {
-display : none;
-}
-.con {
-font-size : 30px;
-float : left;
-height : 50px;
-}
-.right {
-float: right;
-}
-.left {
-float: left;
-}
-.clear {
-clear: both;
+@media all and (min-width: 400px) {
+	.cell {
+	float : left;
+	}
+
+	.cell25 {
+	float: left;
+	width: 19%;
+	padding: 3%;
+	}
+
+	.cell30 {
+	float: left;
+	width: 24%;
+	padding: 3%;
+	}
+
+	.cell40 {
+	float: left;
+	width: 34%;
+	padding: 3%;
+	}
+
+	.cell50 {
+	float: left;
+	width: 44%;
+	padding: 3%;
+	}
+
+	.cell60 {
+	float: left;
+	width: 54%;
+	padding: 3%;
+	}
+
+	.cell75 {
+	float: left;
+	width: 69%;
+	padding: 3%;
+	}
+
+	#console {
+	display : none;
+	}
+
+	.con {
+	font-size : 30px;
+	float : left;
+	height : 50px;
+	}
+
+	.right {
+	float: right;
+	}
+
+	.left {
+	float: left;
+	}
+
+	.clear {
+	clear: both;
+	}
 }
 
 /* wumpus styles */
@@ -141,6 +165,7 @@ width: 250px;
 background-color: #000000;
 margin: auto;
 }
+
 .cavern {
 width: 44px;
 height: 39px;
@@ -155,20 +180,25 @@ line-height: 30px;
 color: white;
 padding-top: 5px;
 }
+
 .cavern2 {
 background-color: #000000;
 }
+
 #control {
 }
+
 #menu {
 font-size: 16px;
 padding: 5% 0%;
 }
+
 #menu .btn {
 width: 90%;
 font-size: 16px;
 padding: 5%
 }
+
 .corner {
 width: 50px;
 height: 50px;
@@ -176,25 +206,30 @@ border-radius: 25px;
 position: absolute;
 background-color: #777777;
 }
+
 .ne {
 top: -20px;
 left: 20px;
 }
+
 .sw {
 top: 20px;
 left: -20px;
 }
+
 .wall {
 width: 10px;
 height: 10px;
 position: absolute;
-baxkground-color: #000000;
+background-color: #000000;
 z-index: 2;
 }
+
 .sw_wall {
 bottom: 10px;
 left: 0px;
 }
+
 .blood {
 width: 30px;
 height: 30px;
@@ -203,7 +238,9 @@ background-color:#ff0033;
 position: absolute;
 top: 7px;
 left: 7px;
+z-index: 1;
 }
+
 .slime {
 width: 30px;
 height: 15px;
@@ -211,16 +248,35 @@ background-color: #11ff00;
 position: absolute;
 bottom: 0px;
 left: 7px;
+z-index: 2;
 }
+
 .pit {
-width: 30px;
-height: 30px;
+width: 40px;
+height: 40px;
 border-radius: 15px;
 background-color:#11ff00;
 position: absolute;
 top: 7px;
 left: 7px;
+z-index: 0;
 }
+
+.wumpus {
+	position: absolute;
+	z-index: 3;
+}
+
+.hunter {
+	position: absolute;
+	z-index: 4;
+}
+
+.bat {
+	position: absolute;
+	z-index: 5;
+}
+
 </style>
 </head>
 <body>
@@ -250,22 +306,39 @@ left: 7px;
 <div class="cell60 center">
 <div id="cave">
 	<div class="cavern">
-		<div class="blood">
-		</div>
-	</div>
-	<div class="cavern">
-		<div class="slime">
-		</div>
-	</div>
-	<div class="cavern">
 		<div class="bat">
 			&Psi;
 		</div>
-	</div>
-	<div class="cavern">
+		<div class="hunter">
+			&spades;
+		</div>
 		<div class="wumpus">
 			&Omega;
 		</div>
+		<div class="slime">
+		</div>
+		<div class="blood">
+		</div>
+		<div class="pit">
+		</div>
+		<div class="cavern cavern2">
+		<div class="corner ne">
+		</div>
+		<div class="corner sw">
+			<div class="wall sw_wall">
+			</div>
+		</div>
+	</div>
+		
+	</div>
+	<div class="cavern">
+		
+	</div>
+	<div class="cavern">
+		
+	</div>
+	<div class="cavern">
+		
 	</div>
 	<div class="cavern cavern2">
 		<div class="corner ne">
@@ -276,13 +349,10 @@ left: 7px;
 		</div>
 	</div>
 	<div class="cavern">
-		<div class="hunter">
-			&spades;
-		</div>
+		
 	</div>
 	<div class="cavern">
-		<div class="pit">
-		</div>
+		
 	</div>
 </div> 
 </div>
