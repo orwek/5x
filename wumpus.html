@@ -159,122 +159,139 @@ float: left;
 }
 
 /* wumpus styles */
+
 #cave {
-height: 250px;
-width: 250px;
-background-color: #000000;
-margin: auto;
+	height: 250px;
+	width: 250px;
+	background-color: #000000;
+	margin: auto;
 }
 
 .cavern {
-width: 44px;
-height: 39px;
-margin: 3px 3px;
-background-color: #777777;
-float: left;
-position: relative;
-overflow: hidden;
-text-align: center;
-font-size: 30px;
-line-height: 30px;
-color: white;
-padding-top: 5px;
+	width: 44px;
+	height: 39px;
+	margin: 3px 3px;
+	background-color: #777777;
+	float: left;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	font-size: 30px;
+	line-height: 30px;
+	color: white;
+	padding-top: 5px;
 }
 
 .cavern2 {
-background-color: #000000;
+	background-color: #000000;
+	position: relative;
+}
+
+.cavern.cavern2 {
+	background-color: #000000;
+	position: absolute;
+	top: -3;
+	left: -3;
 }
 
 #control {
 }
 
 #menu {
-font-size: 16px;
-padding: 5% 0%;
+	font-size: 16px;
+	padding: 5% 0%;
 }
 
 #menu .btn {
-width: 90%;
-font-size: 16px;
-padding: 5%
+	width: 90%;
+	font-size: 16px;
+	padding: 5%
 }
 
 .corner {
-width: 50px;
-height: 50px;
-border-radius: 25px;
-position: absolute;
-background-color: #777777;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	position: absolute;
+	background-color: #777777;
 }
 
 .ne {
-top: -20px;
-left: 20px;
+	top: -20px;
+	left: 20px;
 }
 
 .sw {
-top: 20px;
-left: -20px;
+	top: 20px;
+	left: -20px;
 }
 
 .wall {
-width: 10px;
-height: 10px;
-position: absolute;
-background-color: #000000;
-z-index: 2;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background-color: #000000;
+	z-index: 2;
 }
 
 .sw_wall {
-bottom: 10px;
-left: 0px;
+	bottom: 10px;
+	left: 0px;
 }
 
 .blood {
-width: 30px;
-height: 30px;
-border-radius: 15px;
-background-color:#ff0033;
-position: absolute;
-top: 7px;
-left: 7px;
-z-index: 1;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background-color:#ff0033;
+	position: absolute;
+	top: 7px;
+	left: 7px;
+	z-index: 1;
 }
 
 .slime {
-width: 30px;
-height: 15px;
-background-color: #11ff00;
-position: absolute;
-bottom: 0px;
-left: 7px;
-z-index: 2;
+	width: 30px;
+	height: 15px;
+	background-color: #11ff00;
+	position: absolute;
+	bottom: 0px;
+	left: 7px;
+	z-index: 2;
 }
 
 .pit {
-width: 40px;
-height: 40px;
-border-radius: 15px;
-background-color:#11ff00;
-position: absolute;
-top: 7px;
-left: 7px;
-z-index: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 15px;
+	background-color:#11ff00;
+	position: absolute;
+	top: 7px;
+	left: 7px;
+	z-index: 0;
 }
 
 .wumpus {
 	position: absolute;
 	z-index: 3;
+	top: 10px;
+	left: 10px;
+	color: #efefef;
 }
 
 .hunter {
 	position: absolute;
 	z-index: 4;
+	top: 10px;
+	left: 10px;
 }
 
 .bat {
 	position: absolute;
 	z-index: 5;
+	top: 10px;
+	left: 10px;
+	color: #000000;
 }
 
 </style>
