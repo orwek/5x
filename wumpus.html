@@ -57,6 +57,7 @@ body {
 	border-radius: 5px;
 	border-bottom: 2px solid #000000;
 	border-right: 2px solid #000000;
+	max-width: 500px;
 }
 
 #log {
@@ -307,6 +308,27 @@ body {
 	color: #000000;
 }
 
+@media all and (min-width: 400px) {
+	#menu {
+		display: block !important;
+		width: 100%;
+		height: 5%;
+		padding: 0px 0px;
+		margin: 0px auto !important;
+		background-color: #000000;
+		color: #ffffff;
+	}
+
+	#menu div, #menu .btn {
+		height: 20px !important;
+		width: 15% !important;
+		padding: 5px !important;
+		float: left;
+		background-color: #000000;
+	}
+
+}
+
 </style>
 </head>
 <body>
@@ -451,26 +473,7 @@ body {
 		bats : 2,
 		tiles : [],
 		location : -1,
-		template : '<div id="tile{{num}}" class="cavern">
-		<div class="bat">&Psi;</div>
-		<div class="hunter">&spades;</div>
-		<div class="wumpus">&Omega;</div>
-		<div class="slime"></div>
-		<div class="blood"></div>
-		<div class="pit">	</div>
-		<div class="cavern2 cavern_a">
-			<div class="corner ne"></div>
-			<div class="corner sw">
-				<div class="wall sw_wall"></div>
-			</div>
-		</div>	
-		<div class="cavern2 cavern_b">
-			<div class="corner nw"></div>
-			<div class="corner se">
-				<div class="wall sw_wall"></div>
-			</div>
-		</div>		
-	</div>'
+		template : '<div id="tile{{num}}" class="cavern">\r\n<div class="bat">&Psi;</div>\r\n<div class="hunter">&spades;</div>\r\n		<div class="wumpus">&Omega;</div>\r\n	<div class="slime"></div>\r\n<div class="blood"></div>\r\n<div class="pit"></div>\r\n		<div class="cavern2 cavern_a">\r\n	<div class="corner ne"></div>\r\n<div class="corner sw"><div class="wall sw_wall"></div>\r\n	</div>\r\n</div>\r\n<div class="cavern2 cavern_b">\r\n<div class="corner nw"></div>\r\n<div class="corner se">\r\n<div class="wall sw_wall"></div>\r\n</div>\r\n</div>\r\n</div>',
 		move : function (direction) {
 
 		},
@@ -516,8 +519,7 @@ body {
 		},
 		lose : function () {
 
-		}
-		
+		}	
 	};
 
 	</script>
