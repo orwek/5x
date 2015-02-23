@@ -7,91 +7,92 @@
 <style type="text/css">
 
 body {
-margin: 0;
-padding: 0;
-background-color: #999999;
+	margin: 0;
+	padding: 0;
+	background-color: #999999;
 }
 
 .center {
-margin: auto;
+	margin: auto !important;
 }
 
 .nav {
-width: auto;
-height: 50px;
-color: #ffffff;
-background-color: #000000;
-text-align: left;
-font-size: 20px;
-position: relative;
-vertical-align: center;
-margin-bottom: 25px;
-line-height: 50px;
-padding-left: 10px;
+	width: auto;
+	height: 50px;
+	color: #ffffff;
+	background-color: #000000;
+	text-align: left;
+	font-size: 20px;
+	position: relative;
+	vertical-align: center;
+	margin-bottom: 25px;
+	line-height: 50px;
+	padding-left: 10px;
 }
 
 .nav div {
-float: left;
-font-size: 14px;
+	float: left;
+	font-size: 14px;
 }
 
 .nav .item {
-font-size: 40px;
-margin-left: 4%;
-font-weight: bold;
+	font-size: 40px;
+	margin-left: 4%;
+	font-weight: bold;
 }
 
 .row {
-width: auto;
-clear: both;
-margin-bottom: 5%;
+	width: auto;
+	clear: both;
+	margin-bottom: 5%;
 }
 
 .btn {
-background-color: #e7e7e7;
-padding: 0%;
-text-align: center;
-font-size: 30px;
-float: left;
-margin: 1px;
-border-radius: 5px;
-border-bottom: 2px solid #000000;
-border-right: 2px solid #000000;
+	background-color: #e7e7e7;
+	padding: 0%;
+	text-align: center;
+	font-size: 30px;
+	float: left;
+	margin: 1px;
+	border-radius: 5px;
+	border-bottom: 2px solid #000000;
+	border-right: 2px solid #000000;
+	max-width: 500px;
 }
 
 #log {
-color: red;
-margin : 15px;
-padding: 10px;
-font-size : 20px;
-height : 150px;
-overflow : scroll;
-background-color : #e7e7e7;
+	color: red;
+	margin : 15px;
+	padding: 10px;
+	font-size : 20px;
+	height : 150px;
+	overflow : scroll;
+	background-color : #e7e7e7;
 }
 
 .cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
-float: none;
-width: 94%;
-padding: 3%;
+	float: none;
+	width: 94%;
+	padding: 3%;
 }
 
 .cell {
-clear: both;
+	clear: both;
 }
 
 .half {
-width: 45% !important;
-float: left;
+	width: 45% !important;
+	float: left;
 }
 
 .third {
-width: 35% !important;
-float: left;
+	width: 35% !important;
+	float: left;
 }
 
 .quarter {
-width: 18%;
-float: left;
+	width: 18%;
+	float: left;
 }
 
 @media all and (min-width: 400px) {
@@ -156,6 +157,10 @@ float: left;
 	.clear {
 	clear: both;
 	}
+
+	.center {
+		margin: auto !important;
+	}
 }
 
 /* wumpus styles */
@@ -165,6 +170,7 @@ float: left;
 	width: 250px;
 	background-color: #000000;
 	margin: auto;
+	position: relative;
 }
 
 .cavern {
@@ -183,15 +189,13 @@ float: left;
 }
 
 .cavern2 {
-	background-color: #000000;
-	position: relative;
-}
-
-.cavern.cavern2 {
-	background-color: #000000;
+	width: 44px;
+	height: 44px;
 	position: absolute;
-	top: -3;
-	left: -3;
+	background-color: #000000;
+	top: 0;
+	left: 0;
+	z-index: 0;
 }
 
 #control {
@@ -221,6 +225,16 @@ float: left;
 	left: 20px;
 }
 
+.nw {
+	top: -20px;
+	left: -20px;
+}
+
+.se {
+	top: 20px;
+	left: 20px;
+}
+
 .sw {
 	top: 20px;
 	left: -20px;
@@ -247,7 +261,7 @@ float: left;
 	position: absolute;
 	top: 7px;
 	left: 7px;
-	z-index: 1;
+	z-index: 2;
 }
 
 .slime {
@@ -257,41 +271,62 @@ float: left;
 	position: absolute;
 	bottom: 0px;
 	left: 7px;
-	z-index: 2;
+	z-index: 3;
 }
 
 .pit {
 	width: 40px;
 	height: 40px;
 	border-radius: 15px;
-	background-color:#11ff00;
+	background-color: #096703;
 	position: absolute;
-	top: 7px;
-	left: 7px;
-	z-index: 0;
+	top: 2px;
+	left: 2px;
+	z-index: 1;
 }
 
 .wumpus {
 	position: absolute;
-	z-index: 3;
+	z-index: 4;
 	top: 10px;
 	left: 10px;
-	color: #efefef;
+	color: #4d0707;
 }
 
 .hunter {
 	position: absolute;
-	z-index: 4;
+	z-index: 5;
 	top: 10px;
-	left: 10px;
+	left: 13px;
 }
 
 .bat {
 	position: absolute;
-	z-index: 5;
+	z-index: 6;
 	top: 10px;
 	left: 10px;
 	color: #000000;
+}
+
+@media all and (min-width: 400px) {
+	#menu {
+		display: block !important;
+		width: 100%;
+		height: 5%;
+		padding: 0px 0px;
+		margin: 0px auto !important;
+		background-color: #000000;
+		color: #ffffff;
+	}
+
+	#menu div, #menu .btn {
+		height: 20px !important;
+		width: 15% !important;
+		padding: 5px !important;
+		float: left;
+		background-color: #000000;
+	}
+
 }
 
 </style>
@@ -301,9 +336,9 @@ float: left;
 <div class="right" onclick= "wmp.menu()">X</div>
 <div style="padding: 5%; font-weight: bold;" >Memoir Media- Wumpus</div> 
 
-<div class="btn">new game</div>
-<div class="btn">show map</div>
-<div class="btn">help</div>
+<div class="btn" onclick="wmp.init();">new game</div>
+<div class="btn" onclick="wmp.show();">show map</div>
+<div class="btn" onclick="wmp.help();">help</div>
 </div>
 
 <!-- game screen -->
@@ -311,66 +346,62 @@ float: left;
 <!--
 	z-index
 	************
-	5- bat
-	4- hunter
-	3- wumpus
-	2- slime
-	1- blood
-	0- pit
+	6- bat
+	5- hunter
+	4- wumpus
+	3- slime
+	2- blood
+	1- pit
+	0- corner
 -->
 
 <div class="center row" style="width: 95%">
 <div class="cell60 center">
 <div id="cave">
-	<div class="cavern">
-		<div class="bat">
-			&Psi;
-		</div>
-		<div class="hunter">
-			&spades;
-		</div>
-		<div class="wumpus">
-			&Omega;
-		</div>
-		<div class="slime">
-		</div>
-		<div class="blood">
-		</div>
-		<div class="pit">
-		</div>
-		<div class="cavern cavern2">
-		<div class="corner ne">
-		</div>
-		<div class="corner sw">
-			<div class="wall sw_wall">
+	<div id="tile0" class="cavern">
+		<div class="bat">&Psi;</div>
+		<div class="hunter">&spades;</div>
+		<div class="wumpus">&Omega;</div>
+		<div class="slime"></div>
+		<div class="blood"></div>
+		<div class="pit">	</div>
+		<div class="cavern2 cavern_a">
+			<div class="corner ne"></div>
+			<div class="corner sw">
+				<div class="wall sw_wall"></div>
 			</div>
-		</div>
-	</div>
-		
-	</div>
-	<div class="cavern">
-		
-	</div>
-	<div class="cavern">
-		
-	</div>
-	<div class="cavern">
-		
-	</div>
-	<div class="cavern cavern2">
-		<div class="corner ne">
-		</div>
-		<div class="corner sw">
-			<div class="wall sw_wall">
+		</div>	
+		<div class="cavern2 cavern_b">
+			<div class="corner nw"></div>
+			<div class="corner se">
+				<div class="wall sw_wall"></div>
 			</div>
-		</div>
+		</div>		
 	</div>
-	<div class="cavern">
-		
-	</div>
-	<div class="cavern">
-		
-	</div>
+	<div id="tile1" class="cavern"></div>
+	<div id="tile2" class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
+	<div class="cavern"></div>
 </div> 
 </div>
 <div id="control" class="cell40 center">
@@ -429,11 +460,46 @@ float: left;
 	a.log("Error- " + msg + "(" + num + ", " + col + ") <br /> " + url + " " + obj);
 	};
 
-	</script>
-	<script>
+//
+//	Wumpus 2014.12.23
+//	Kendall Purser
+//	For fun!
+//
 	var wmp = {
 		menu_vis : 0,
+		difficulty : 0, // 0= easy, 1= medium, 2= hard
+		pits : 2,
+		blood : 2,
+		bats : 2,
+		tiles : [],
+		location : -1,
+		template : '<div id="tile{{num}}" class="cavern">\r\n<div class="bat">&Psi;</div>\r\n<div class="hunter">&spades;</div>\r\n		<div class="wumpus">&Omega;</div>\r\n	<div class="slime"></div>\r\n<div class="blood"></div>\r\n<div class="pit"></div>\r\n		<div class="cavern2 cavern_a">\r\n	<div class="corner ne"></div>\r\n<div class="corner sw"><div class="wall sw_wall"></div>\r\n	</div>\r\n</div>\r\n<div class="cavern2 cavern_b">\r\n<div class="corner nw"></div>\r\n<div class="corner se">\r\n<div class="wall sw_wall"></div>\r\n</div>\r\n</div>\r\n</div>',
+		move : function (direction) {
+
+		},
+		shoot: function (direction) {
+
+
+		},
+		init : function () {
+			wmp.load();
+			wmp.shuffle();
+			wmp.update_ui();
+		},
+		load : function () {
+			// generate and load tiles
+			
+
+			//update ui
+		},
+		shuffle : function () {
+
+		},
+		update_ui : function () {
+
+		},
 		menu : function () {
+			// simple menu toggle
 			if (wmp.menu_vis === 0) {
 				a.show("menu");
 				wmp.menu_vis = 1;
@@ -442,9 +508,18 @@ float: left;
 				wmp.menu_vis = 0;
 			}
 		},
-		shoot: function () {
+		show : function () {
 
-		}
+		},
+		help : function () {
+
+		},
+		win : function () {
+
+		},
+		lose : function () {
+
+		}	
 	};
 
 	</script>
