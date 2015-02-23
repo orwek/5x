@@ -1,0 +1,193 @@
+<!DOCTYPE html>  
+<html>
+<head>
+	<title>CLUES</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+		.nav {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: auto;
+			min-width: 100%;
+			height: 30px;
+			font-size: 25px;
+			color: #ffffff;
+			background-color: #000000;
+			margin-bottom: 10px;
+		}
+		.center {
+			margin: auto;
+		}
+		.row {
+			width: auto;
+			clear: both;
+			margin-bottom: 5%;
+		}		
+		.btn {
+			background-color: #e7e7e7;
+			padding: 15px;
+			text-align: center;
+			font-size: 30px;
+			float: left;
+			margin: 15px;
+			border-radius: 30px;
+		}
+		#log {
+			color: red;
+			display : none;
+			margin-top : 15px;
+			padding: 15px;
+			font-size : 30px;
+			height : 150px;
+			overflow : scroll;
+			background-color : #e7e7e7;
+			border-radius: 30px;
+		}
+		.cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
+			float: none;
+			width: auto;
+			padding: 3%;
+		}
+	@media all and (min-width: 400px)  {
+		.cell {
+			float: left;
+			padding: 3%;
+		}
+		.cell25 {
+			float: left;
+			width: 19%;
+			padding: 3%;
+		}
+		.cell30 {
+			float: left;
+			width: 24%;
+			padding: 3%;
+		}
+		.cell50 {
+			float: left;
+			width: 44%;
+			padding: 3%;
+		}
+		.cell60 {
+			float: left;
+			width: 54%;
+			padding: 3%;
+		}
+		.cell75 {
+			float: left;
+			width: 69%;
+			padding: 3%;
+		}
+	}
+
+/* Game styles */
+
+	.nav div {
+		float: right;
+		margin: 0px 5%;
+	}
+
+	.nav #title {
+		float: left;
+	}
+
+	#gameboard {
+		width: 300px;
+		height: 300px;
+		background-color: #000000;
+		margin: 50px auto;
+	}
+
+	.rooms {
+		float:left;
+		width: 58px;
+		height: 58px;
+		background-color: #999999;
+		border: 1px solid #ffffff;
+		color: #ffffff;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div id="title">CLUES</div>
+		<div id="settings">Settings</div>
+		<div id="new_game">New Game</div>
+	</div>
+	<div class="row">
+		<div id="gameboard">
+			<!-- write web app here -->
+			<div class="rooms" id="room0">Study</div>
+			<div class="rooms" id="room1"></div>
+			<div class="rooms" id="room2">Hall</div>
+			<div class="rooms" id="room3"></div>
+			<div class="rooms" id="room4">Lounge</div>
+			<div class="rooms" id="room5"></div>
+			<div class="rooms" id="room6"></div>
+			<div class="rooms" id="room7"></div>
+			<div class="rooms" id="room8"></div>
+			<div class="rooms" id="room9"></div>
+			<div class="rooms" id="room10">Billiard</div>
+			<div class="rooms" id="room11"></div>
+			<div class="rooms" id="room12">Library</div>
+			<div class="rooms" id="room13"></div>
+			<div class="rooms" id="room14">Dinning</div>
+			<div class="rooms" id="room15"></div>
+			<div class="rooms" id="room16"></div>
+			<div class="rooms" id="room17"></div>
+			<div class="rooms" id="room18"></div>
+			<div class="rooms" id="room19"></div>
+			<div class="rooms" id="room20">Conservatory</div>
+			<div class="rooms" id="room21"></div>
+			<div class="rooms" id="room22">Ballroom</div>
+			<div class="rooms" id="room23"></div>
+			<div class="rooms" id="room24">Kitchen</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="log"></div>
+	</div>
+<script>
+	// andi 0.1 - mobile dev toolkit
+	// Written by Kendall Purser
+	// 2014.06.01
+
+	// ***catch browser errors and log them
+	window.onerror = function (msg, url, num, col, obj) {
+		a.log("ERR(" + num + ", " + col + ") " + msg + "<br />" + url + " " + obj);
+	};
+	
+	// ***JavaScript API***
+	var a = {
+		get : function (id) {
+			var temp_id = document.getElementById(id);
+			return temp_id;
+		},
+		apnd : function (id, x) {
+			a.get(id).innerHTML = get(id).innerHTML + x;
+		},
+		ppnd : function (id, x) {
+			a.get(id).innerHTML = x + get(id).innerHTML;
+		},
+		log : function (msg) {
+			a.show("log");
+			var temp = get("log").innerHTML;
+			a.get("log").innerHTML = temp + "<br /> " + msg;
+		},
+		css : function (id,key_val) {
+			for (i in key_val) {
+				a.get(id).style[i] = key_val[i];
+			}
+		},
+		show : function (id) {
+			a.css(id, {"display":"block"});
+		},
+		hide : function (id) {
+			a.css(id, {"display":"none"});
+		}
+	};
+</script>
+</body>
+</html>
