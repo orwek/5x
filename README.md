@@ -18,11 +18,13 @@ Games Planned
 
 -JS-Slayer (Territory Control, Similar to Slay or HexSlayer)
 
--Clues (Based on the Parker Brothers board game Clue)
+
 
 
 Games in Development
 --
+
+-Clues (Based on the Parker Brothers board game Clue)
 
 -Wumpus (Slim port of TI 99/4a- Hunt The Wumpus)
 
