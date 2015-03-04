@@ -10,7 +10,7 @@ Games Planned
 
 -JS-Craft (A miniature RTS, Warcraft-like experience)
 
--JS-Defense (Modeled after Bloons TD)
+-JSTD (Modeled after Bloons TD)
 
 -JS2000 (A space conquest game, Turn Based Strategy)
 
