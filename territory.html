@@ -1,0 +1,346 @@
+<!DOCTYPE html>  
+<html>
+<head>
+	<title>Territory</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+	/*
+		Color		Hex#
+		red	 		color: #c77a7e;
+		orange		color:#e2b896;
+		yellow		color:#eef2bf;
+		green		color:#cadfc6;
+		blue		color:#81aad5;
+		purple		color:#cfc0d3;
+		gray		color:#efefec;
+		white		color:#ffffff;
+
+	*/
+		.nav {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: auto;
+			min-width: 100%;
+			height: 30px;
+			font-size: 25px;
+			color: #ffffff;
+			background-color: #000000;
+			margin-bottom: 10px;
+		}
+		.center {
+			margin: auto;
+		}
+		.row {
+			width: auto;
+			clear: both;
+			margin-bottom: 5%;
+		}		
+		.btn {
+			background-color: #e7e7e7;
+			padding: 15px;
+			text-align: center;
+			font-size: 30px;
+			float: left;
+			margin: 15px;
+			border-radius: 30px;
+		}
+		#log {
+			color: red;
+			display : none;
+			margin-top : 15px;
+			padding: 15px;
+			font-size : 30px;
+			height : 150px;
+			overflow : scroll;
+			background-color : #e7e7e7;
+			border-radius: 30px;
+		}
+		.cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
+			float: none;
+			width: auto;
+			padding: 3%;
+		}
+	@media all and (min-width: 400px)  {
+		.cell {
+			float: left;
+			padding: 3%;
+		}
+		.cell25 {
+			float: left;
+			width: 19%;
+			padding: 3%;
+		}
+		.cell30 {
+			float: left;
+			width: 24%;
+			padding: 3%;
+		}
+		.cell50 {
+			float: left;
+			width: 44%;
+			padding: 3%;
+		}
+		.cell60 {
+			float: left;
+			width: 54%;
+			padding: 3%;
+		}
+		.cell75 {
+			float: left;
+			width: 69%;
+			padding: 3%;
+		}
+	}
+
+/* Game styles */
+
+	.nav div {
+		float: right;
+		margin: 0px 5%;
+	}
+
+	.nav #title {
+		float: left;
+	}
+
+	#gameboard {
+		width: 300px;
+		height: 300px;
+		background-color: #000000;
+		margin: 50px auto;
+	}
+
+	.rooms {
+		float:left;
+		width: 58px;
+		height: 58px;
+		background-color: #999999;
+		border: 1px solid #ffffff;
+		color: #ffffff;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div id="title">Territory</div>
+		<div id="settings">Settings</div>
+		<div id="rules">Rules</div>
+		<div id="new_game">Start Game</div>
+	</div>
+	<div class="row">
+		<div class="center">
+	<div id="rules" style="display: none;">
+		<span id="close" onclick="app.rules();">close X</span>
+		<h3>Rules</h3>
+		<p>
+			<b>Goal:</b> Control 51% of the board
+		</p>
+		<p>
+			In Territory there are three units: capitals, people, and towers. People can be stacked up to 3 times to create larger units. Towers cannot move or be stacked. Each person costs 10 to build, each tower costs 15 (capitals are automatically generated). To attack a neighboring square you must be larger than that square and any adjacent square in the same country.
+
+		<p>
+			Economy works as follows:
+			<hr />
+
+			Income : <br />
+			1 per territory<br />
+			<br />
+			Expense : <br />
+			1 per tree- (-1)<br />
+			2 per citizen- (0)<br />
+			0 per capital- (1)<br />
+			3 per soldier- (2)<br />
+			4 per tower- (<span class="red">3</span>)<br />
+			5 per knight- (4)<br />
+
+		</p>
+		
+	</div>
+	<div id="controls">
+		<div id="left">
+			<div id="percent">
+				<div class="player1" style="width: 34px;"></div>
+				<div class="player2" style="width: 34px;"></div>
+				<div class="player3" style="width: 34px;"></div>
+				<div class="player4" style="width: 34px;"></div>
+				<div class="player5" style="width: 32px;"></div>
+				<div class="player6" style="width: 32px;"></div>
+			</div>
+			<div id="econ">
+				Country # <span id="country"></span><br />
+				Income: <span id="income"></span><br />
+				Expenses: <span id="expense"></span><br />
+				<hr />
+				Balance: <span id="balance"></span>
+			</div>
+		</div>
+		<div id="buy">
+			<div id="peeps" class="button click">Recruit</div>
+			<div id="build" class="button click">Build</div>
+			<div id="end" class="button click" onclick="app.end_turn();"> End Turn </div>
+		</div>
+	</div>
+
+	<div id="msg"></div>	
+	
+	<div id="stage">
+		
+	</div>
+
+
+
+
+</div>
+
+<div id="template">
+	<div id ="turf{{id}}" class="turf player{{number}}"></div>
+</div>
+	</div>
+	<div class="row">
+		<div id="gameboard">
+			<!-- write web app here -->
+			<div class="rooms" id="room0">Study</div>
+			<div class="rooms" id="room1"></div>
+			<div class="rooms" id="room2">Hall</div>
+			<div class="rooms" id="room3"></div>
+			<div class="rooms" id="room4">Lounge</div>
+			<div class="rooms" id="room5"></div>
+			<div class="rooms" id="room6"></div>
+			<div class="rooms" id="room7"></div>
+			<div class="rooms" id="room8"></div>
+			<div class="rooms" id="room9"></div>
+			<div class="rooms" id="room10">Billiard</div>
+			<div class="rooms" id="room11"></div>
+			<div class="rooms" id="room12">Library</div>
+			<div class="rooms" id="room13"></div>
+			<div class="rooms" id="room14">Dinning</div>
+			<div class="rooms" id="room15"></div>
+			<div class="rooms" id="room16"></div>
+			<div class="rooms" id="room17"></div>
+			<div class="rooms" id="room18"></div>
+			<div class="rooms" id="room19"></div>
+			<div class="rooms" id="room20">Conservatory</div>
+			<div class="rooms" id="room21"></div>
+			<div class="rooms" id="room22">Ballroom</div>
+			<div class="rooms" id="room23"></div>
+			<div class="rooms" id="room24">Kitchen</div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="log"></div>
+	</div>
+<script>
+	// andi 0.1 - mobile dev toolkit
+	// Written by Kendall Purser
+	// 2014.06.01
+
+	// ***catch browser errors and log them
+	window.onerror = function (msg, url, num, col, obj) {
+		a.log("ERR(" + num + ", " + col + ") " + msg + "<br />" + url + " " + obj);
+	};
+	
+	// ***JavaScript API***
+	var a = {
+		get : function (id) {
+			var temp_id = document.getElementById(id);
+			return temp_id;
+		},
+		apnd : function (id, x) {
+			a.get(id).innerHTML = get(id).innerHTML + x;
+		},
+		ppnd : function (id, x) {
+			a.get(id).innerHTML = x + get(id).innerHTML;
+		},
+		log : function (msg) {
+			a.show("log");
+			var temp = get("log").innerHTML;
+			a.get("log").innerHTML = temp + "<br /> " + msg;
+		},
+		css : function (id,key_val) {
+			for (i in key_val) {
+				a.get(id).style[i] = key_val[i];
+			}
+		},
+		show : function (id) {
+			a.css(id, {"display":"block"});
+		},
+		hide : function (id) {
+			a.css(id, {"display":"none"});
+		}
+	};
+
+	// Territory game scripts
+	var ter = {
+		turn : "",
+		data : [
+			["a","a","a","a","a"],
+			["b","b","b","b","b"],
+			["c","c","c","c","c"],
+			["d","d","d","d","d"],
+			["e","e","e","e","e"]
+		],
+		// Game controls
+		init : function () {
+		
+		},
+		settings : function () {
+		
+		},
+		start_game : function () {
+		
+		},
+		map_gen : function () {
+			
+		},
+		// Per Turn controls
+		capital : function () {
+		
+		},
+		economy : function () {
+		
+		},
+		tree : function () {
+		
+		},
+		// Player controls
+		build: function () {
+		
+		},
+		recruit : function () {
+		
+		},
+		select : function () {
+		
+		},
+		target : function () {
+		
+		},
+		move : function () {
+		
+		},
+		// info
+		rules : function () {
+		
+		},
+		save : function () {
+		
+		},
+		load : function () {
+		
+		},
+		// computer players
+		passive_ai : function () {
+		
+		},
+		moderate_ai : function () {
+		
+		},
+		aggressive_ai : function () {
+		
+		}
+	}
+</script>
+</body>
+</html>
