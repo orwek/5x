@@ -1,0 +1,99 @@
+
+<html>
+<head>
+	<title>Territory</title>
+
+<link rel="stylesheet" type="text/css" href="territory.css" />
+
+<style type="text/css">
+
+
+</style>
+
+
+</head>
+<body>
+<div id="menu">
+	<h3 id="title">Memoir Media: Territory </h3>
+	<ul>
+		<li id="settings" class="click">Settings</li>     
+		<li id="start" class="click" onclick="app.rules();">Rules</li>     
+		<li id="start" class="click" onclick="app.start();">Start Game</li>     
+	</ul>
+</div>
+
+<div class="center">
+	<div id="rules">
+		<span id="close" onclick="app.rules();">close X</span>
+		<h3>Rules</h3>
+		<p>
+			<b>Goal:</b> Control 51% of the board
+		</p>
+		<p>
+			In Territory there are three units: capitals, people, and towers. People can be stacked up to 3 times to create larger units. Towers cannot move or be stacked. Each person costs 10 to build, each tower costs 15 (capitals are automatically generated). To attack a neighboring square you must be larger than that square and any adjacent square in the same country.
+
+		<p>
+			Economy works as follows:
+			<hr />
+
+			Income : <br />
+			1 per territory<br />
+			<br />
+			Expense : <br />
+			1 per tree- &phi;<br />
+			2 per citizen- &odot;<br />
+			4 per guard- &ocir;<br />
+			6 per soldier- &odash;<br />
+			8 per knight- &oast; 
+		</p>
+		
+	</div>
+	<div id="controls">
+		<div id="left">
+			<div id="percent">
+				<div class="player1" style="width: 34px;"></div>
+				<div class="player2" style="width: 34px;"></div>
+				<div class="player3" style="width: 34px;"></div>
+				<div class="player4" style="width: 34px;"></div>
+				<div class="player5" style="width: 32px;"></div>
+				<div class="player6" style="width: 32px;"></div>
+			</div>
+			<div id="econ">
+				Country # <span id="country"></span><br />
+				Income: <span id="income"></span><br />
+				Expenses: <span id="expense"></span><br />
+				<hr />
+				Balance: <span id="balance"></span>
+			</div>
+		</div>
+		<div id="buy">
+			<div id="peeps" class="button click">Recruit</div>
+			<div id="build" class="button click">Build</div>
+			<div id="end" class="button click" onclick="app.end_turn();"> End Turn </div>
+		</div>
+	</div>
+
+	<div id="msg"></div>	
+	
+	<div id="stage">
+		
+	</div>
+
+
+
+
+</div>
+
+<div id="template">
+	<div id ="turf{{id}}" class="turf player{{number}}"></div>
+</div>
+
+<script src="jquery-1.8.2.min.js"></script>
+<script src="territory.js"></script>
+<script>
+	
+</script>
+
+
+</body>
+</html>

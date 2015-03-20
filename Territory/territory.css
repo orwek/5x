@@ -1,0 +1,147 @@
+
+body {
+    margin : 0px;
+    padding : 0px;
+}
+
+#menu {
+    width : auto;
+    height : 25px;
+    padding : 5px;
+    background-color : #000000;
+    color : #ffffff;
+    margin-bottom : 15px;
+}
+
+#title {
+    margin : 0px;
+    padding : 0px 10px;
+    float : left;
+}
+
+#menu ul li{    
+    float : right;
+    margin-top : -15px;
+    margin-right: 20px;
+    display : inline;
+}
+
+.center {
+    margin : auto;
+    width : 550px;
+}
+
+#controls {
+    width : 500;
+    height : 90;
+    background-color : #e7e7e7;
+    margin : 20px;
+    padding : 10px;
+}
+
+#left {
+    float : left;
+}
+
+#percent {
+    width : 200px;
+    height : 10px;
+}
+
+#percent div {
+    height: 10px;
+    float:left;
+}
+
+#econ {
+    width : 188px;
+    margin : 5px 0px;
+    border : 1px solid #000000;
+    font-size : 11px;
+    font-weight : bold;
+    padding : 5px;
+}
+
+#buy {
+    float : right;
+}
+
+#buy div {
+    text-align : center;
+    line-height : 85px;
+    font-weight : bold;
+}
+
+.button {
+    border : 1px solid #000000;
+    width : 85px;
+    height : 90px;
+    margin-left : 10px;
+    float : left;
+}
+
+#msg {
+    margin: 10px 20px;
+}
+
+#stage {
+    width : 520;
+    height : 520;
+    background-color : #000000;
+    margin-left : 20px;
+
+}
+
+#rules {
+    width : 400px;
+    background-color : #000000;
+    color : #ffffff;
+    padding : 20px;
+    display : none;
+    margin : auto;
+}
+
+#close {
+    cursor : pointer;
+    float : right;
+    border : 1px solid #ffffff;
+    padding : 5px;
+}
+
+.turf {
+    width : 50px;
+    height : 50px;
+    margin : 1px;
+    float : left;
+    font-size : 36px;
+    text-align : center;
+    line-height: 50px;
+}
+
+.player1 {
+    background-color : #f4cccc;
+}
+
+.player2 {
+    background-color : #f9cb9c;
+}
+
+.player3 {
+    background-color : #ffe599;
+}
+
+.player4 {
+    background-color : #b6d7a8;
+}
+
+.player5 {
+    background-color : #a4c2f4;
+}
+
+.player6 {
+    background-color : #b4a7d6;
+}
+
+.click {
+    cursor: pointer;
+}

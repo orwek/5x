@@ -1,7 +1,8 @@
 5x
 ==
 
-Browser games for mobile devices based on a 5x5 grid.
+Originally intended as a collection of browser games for mobile devices based on a 5x5 grid. 5x has now become a collection of JavaScript games that utilize the DOM for the user interface rather than the HTML5 canvas element.
+
 This project will also be the primary test for the **andi** framework (www.github.com/orwek/andi).
 
 
@@ -16,13 +17,15 @@ Games Planned
 
 -Jelda (RPG, Zelda-like experience)
 
--JS-Slayer (Territory Control, Similar to Slay or HexSlayer)
+
 
 
 
 
 Games in Development
 --
+
+-Territory (Territory Control, Similar to Slay or HexSlayer)
 
 -Clues (Based on the Parker Brothers board game Clue)
 
