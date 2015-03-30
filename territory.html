@@ -342,6 +342,7 @@
 	// Territory game scripts
 	var ter = {
 		turn : "",
+		round : 0,
 		selected : "",
 		owner : [
 			["a","a","a","a","a"],
@@ -378,14 +379,19 @@
 			
 		},
 		// Per Turn controls
+		country : function () {
+			// define the size and number of countries
+		},
 		capital : function () {
-		
+			// define the capital based on the first territory in the country
 		},
 		economy : function () {
-		
+			// calculate the income and expenses for each country
 		},
 		tree : function () {
-		
+			// randomly generate trees every so many rounds
+			// get vacant squares 
+			// generate random number
 		},
 		ui : function () {
 			var count = 0;
