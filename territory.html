@@ -6,16 +6,17 @@
 	<style type="text/css">
 	/*
 		Color		Hex#
-		red	 		color: #c77a7e;
-		orange		color:#e2b896;
-		yellow		color:#eef2bf;
-		green		color:#cadfc6;
-		blue		color:#81aad5;
-		purple		color:#cfc0d3;
-		gray		color:#efefec;
-		white		color:#ffffff;
+		red	 		color: 	#c77a7e;
+		orange		color:	#e2b896;
+		yellow		color:	#eef2bf;
+		green		color:	#cadfc6;
+		blue		color:	#81aad5;
+		purple		color:	#cfc0d3;
+		gray		color:	#efefec;
+		white		color:	#ffffff;
 
 	*/
+
 		.nav {
 			position: absolute;
 			top: 0px;
@@ -104,6 +105,63 @@
 		float: left;
 	}
 
+	#rules_menu {
+		cursor: pointer;
+	}
+
+	#rules {
+		position: absolute;
+		top: 30px;
+		left: 35%;
+		z-index: 10;
+		width: 400px;
+		height: 500px;
+		padding: 20px;
+		background-color: #000000;
+		color: #ffffff;
+	}
+
+	#percent {
+	    width : 200px;
+	    height : 10px;
+	}
+
+	#percent div {
+	    height: 10px;
+	    float:left;
+	}
+
+	#controls {
+		width: 500px;
+		margin: 40px auto 0px auto;
+		background-color: #e7e7e7;
+		padding: 10px;
+		height: 100px;
+	}
+
+	#left {
+		float: left;
+	}
+
+	#buy {
+	    float : right;
+	}
+
+	#buy div {
+	    text-align : center;
+	    line-height : 85px;
+	    font-weight : bold;
+	    margin-top: 17px;
+	}
+
+	.button {
+	    border : 1px solid #000000;
+	    width : 85px;
+	    height : 85px;
+	    margin-left : 10px;
+	    float : left;
+	}
+
 	#gameboard {
 		width: 300px;
 		height: 300px;
@@ -121,6 +179,20 @@
 		text-align: center;
 	}
 
+	.select {
+		border: 1px green solid;
+		width: 56px;
+		height: 56px;
+	}
+
+	/* Player colors */
+	.a {	background-color: #c77a7e;}
+	.b {background-color: #e2b896;}
+	.c {	background-color: #eef2bf;}
+	.d {background-color: #cadfc6;}
+	.e {	background-color: #81aad5;}
+
+	.captial, .tower{color: red;}
 	
 	</style>
 </head>
@@ -128,16 +200,16 @@
 	<div class="nav">
 		<div id="title">Territory</div>
 		<div id="settings">Settings</div>
-		<div id="rules">Rules</div>
+		<div id="rules_menu" onclick="a.show('rules');">Rules</div>
 		<div id="new_game">Start Game</div>
 	</div>
 	<div class="row">
 		<div class="center">
 	<div id="rules" style="display: none;">
-		<span id="close" onclick="app.rules();">close X</span>
+		<div id="close" onclick="a.hide('rules');" style="float: right; cursor: pointer;">close X</div>
 		<h3>Rules</h3>
 		<p>
-			<b>Goal:</b> Control 51% of the board
+			<b>Goal:</b> Control more than 51% of the board
 		</p>
 		<p>
 			In Territory there are three units: capitals, people, and towers. People can be stacked up to 3 times to create larger units. Towers cannot move or be stacked. Each person costs 10 to build, each tower costs 15 (capitals are automatically generated). To attack a neighboring square you must be larger than that square and any adjacent square in the same country.
@@ -152,7 +224,7 @@
 			Expense : <br />
 			1 per tree- (-1)<br />
 			2 per citizen- (0)<br />
-			0 per capital- (1)<br />
+			0 per capital- (<span class="red">1</span>)<br />
 			3 per soldier- (2)<br />
 			4 per tower- (<span class="red">3</span>)<br />
 			5 per knight- (4)<br />
@@ -163,12 +235,11 @@
 	<div id="controls">
 		<div id="left">
 			<div id="percent">
-				<div class="player1" style="width: 34px;"></div>
-				<div class="player2" style="width: 34px;"></div>
-				<div class="player3" style="width: 34px;"></div>
-				<div class="player4" style="width: 34px;"></div>
-				<div class="player5" style="width: 32px;"></div>
-				<div class="player6" style="width: 32px;"></div>
+				<div class="a" style="width: 40px;"></div>
+				<div class="b" style="width: 40px;"></div>
+				<div class="c" style="width: 40px;"></div>
+				<div class="d" style="width: 40px;"></div>
+				<div class="e" style="width: 40px;"></div>
 			</div>
 			<div id="econ">
 				Country # <span id="country"></span><br />
@@ -186,13 +257,6 @@
 	</div>
 
 	<div id="msg"></div>	
-	
-	<div id="stage">
-		
-	</div>
-
-
-
 
 </div>
 
@@ -203,31 +267,31 @@
 	<div class="row">
 		<div id="gameboard">
 			<!-- write web app here -->
-			<div class="rooms" id="room0">Study</div>
+			<div class="rooms" id="room0"></div>
 			<div class="rooms" id="room1"></div>
-			<div class="rooms" id="room2">Hall</div>
+			<div class="rooms" id="room2"></div>
 			<div class="rooms" id="room3"></div>
-			<div class="rooms" id="room4">Lounge</div>
+			<div class="rooms" id="room4"></div>
 			<div class="rooms" id="room5"></div>
 			<div class="rooms" id="room6"></div>
 			<div class="rooms" id="room7"></div>
 			<div class="rooms" id="room8"></div>
 			<div class="rooms" id="room9"></div>
-			<div class="rooms" id="room10">Billiard</div>
+			<div class="rooms" id="room10"></div>
 			<div class="rooms" id="room11"></div>
-			<div class="rooms" id="room12">Library</div>
+			<div class="rooms" id="room12"></div>
 			<div class="rooms" id="room13"></div>
-			<div class="rooms" id="room14">Dinning</div>
+			<div class="rooms" id="room14"></div>
 			<div class="rooms" id="room15"></div>
 			<div class="rooms" id="room16"></div>
 			<div class="rooms" id="room17"></div>
 			<div class="rooms" id="room18"></div>
 			<div class="rooms" id="room19"></div>
-			<div class="rooms" id="room20">Conservatory</div>
+			<div class="rooms" id="room20"></div>
 			<div class="rooms" id="room21"></div>
-			<div class="rooms" id="room22">Ballroom</div>
+			<div class="rooms" id="room22"></div>
 			<div class="rooms" id="room23"></div>
-			<div class="rooms" id="room24">Kitchen</div>
+			<div class="rooms" id="room24"></div>
 		</div>
 	</div>
 	<div class="row">
@@ -276,12 +340,27 @@
 	// Territory game scripts
 	var ter = {
 		turn : "",
-		data : [
+		selected : "",
+		owner : [
 			["a","a","a","a","a"],
 			["b","b","b","b","b"],
 			["c","c","c","c","c"],
 			["d","d","d","d","d"],
 			["e","e","e","e","e"]
+		],
+		child : [
+			[-1,0,1,2,3],
+			[4,5,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0]
+		],
+		dl : [
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0],
+			[0,0,0,0,0]
 		],
 		// Game controls
 		init : function () {
@@ -324,7 +403,7 @@
 		},
 		// info
 		rules : function () {
-		
+			a.show("rules");
 		},
 		save : function () {
 		
