@@ -6,6 +6,7 @@ Originally intended as a collection of browser games for mobile devices based on
 This project will also be the primary test for the **andi** framework (www.github.com/orwek/andi).
 
 
+
 Games Planned
 --
 
@@ -19,9 +20,6 @@ Games Planned
 
 
 
-
-
-
 Games in Development
 --
 
@@ -30,6 +28,7 @@ Games in Development
 -Clues (Based on the Parker Brothers board game Clue)
 
 -Wumpus (Slim port of TI 99/4a- Hunt The Wumpus)
+
 
 
 Games Completed

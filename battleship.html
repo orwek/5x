@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Battleship</title>
+<meta name="viewport" content= "width=device-width,initial-scale=1.0" />
+<style type="text/css">
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #999999;
+}
+
+.center {
+	margin: auto !important;
+}
+
+.nav {
+	width: auto;
+	height: 50px;
+	color: #ffffff;
+	background-color: #000000;
+	text-align: left;
+	font-size: 20px;
+	position: relative;
+	vertical-align: center;
+	margin-bottom: 25px;
+	line-height: 50px;
+	padding-left: 10px;
+}
+
+.nav div {
+	float: left;
+	font-size: 14px;
+}
+
+.nav .item {
+	font-size: 40px;
+	margin-left: 4%;
+	font-weight: bold;
+}
+
+.row {
+	width: auto;
+	clear: both;
+	margin-bottom: 5%;
+}
+
+.btn {
+	background-color: #e7e7e7;
+	padding: 0%;
+	text-align: center;
+	font-size: 30px;
+	float: left;
+	margin: 1px;
+	border-radius: 5px;
+	border-bottom: 2px solid #000000;
+	border-right: 2px solid #000000;
+	max-width: 500px;
+}
+
+#log {
+	color: red;
+	margin : 15px;
+	padding: 10px;
+	font-size : 20px;
+	height : 150px;
+	overflow : scroll;
+	background-color : #e7e7e7;
+}
+
+.cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
+	float: none;
+	width: 94%;
+	padding: 3%;
+}
+
+.cell {
+	clear: both;
+}
+
+.half {
+	width: 45% !important;
+	float: left;
+}
+
+.third {
+	width: 35% !important;
+	float: left;
+}
+
+.quarter {
+	width: 18%;
+	float: left;
+}
+
+@media all and (min-width: 400px) {
+	.cell {
+	float : left;
+	}
+
+	.cell25 {
+	float: left;
+	width: 19%;
+	padding: 3%;
+	}
+
+	.cell30 {
+	float: left;
+	width: 24%;
+	padding: 3%;
+	}
+
+	.cell40 {
+	float: left;
+	width: 34%;
+	padding: 3%;
+	}
+
+	.cell50 {
+	float: left;
+	width: 44%;
+	padding: 3%;
+	}
+
+	.cell60 {
+	float: left;
+	width: 54%;
+	padding: 3%;
+	}
+
+	.cell75 {
+	float: left;
+	width: 69%;
+	padding: 3%;
+	}
+
+	#console {
+	display : none;
+	}
+
+	.con {
+	font-size : 30px;
+	float : left;
+	height : 50px;
+	}
+
+	.right {
+	float: right;
+	}
+
+	.left {
+	float: left;
+	}
+
+	.clear {
+	clear: both;
+	}
+
+	.center {
+		margin: auto !important;
+	}
+}
+
+/* Battleship styles */
+
+#cave {
+	height: 250px;
+	width: 250px;
+	background-color: #000000;
+	margin: auto;
+	position: relative;
+}
+
+.cavern {
+	width: 44px;
+	height: 39px;
+	margin: 3px 3px;
+	background-color: #777777;
+	float: left;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	font-size: 30px;
+	line-height: 30px;
+	color: white;
+	padding-top: 5px;
+}
+
+.cavern2 {
+	width: 44px;
+	height: 44px;
+	position: absolute;
+	background-color: #000000;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+
+#control {
+}
+
+#menu {
+	font-size: 16px;
+	padding: 5% 0%;
+}
+
+#menu .btn {
+	width: 90%;
+	font-size: 16px;
+	padding: 5%
+}
+
+.corner {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	position: absolute;
+	background-color: #777777;
+}
+
+.ne {
+	top: -20px;
+	left: 20px;
+}
+
+.nw {
+	top: -20px;
+	left: -20px;
+}
+
+.se {
+	top: 20px;
+	left: 20px;
+}
+
+.sw {
+	top: 20px;
+	left: -20px;
+}
+
+.wall {
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background-color: #000000;
+	z-index: 2;
+}
+
+.sw_wall {
+	bottom: 10px;
+	left: 0px;
+}
+
+.blood {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	background-color:#ff0033;
+	position: absolute;
+	top: 7px;
+	left: 7px;
+	z-index: 2;
+}
+
+.slime {
+	width: 30px;
+	height: 15px;
+	background-color: #11ff00;
+	position: absolute;
+	bottom: 0px;
+	left: 7px;
+	z-index: 3;
+}
+
+.pit {
+	width: 40px;
+	height: 40px;
+	border-radius: 15px;
+	background-color: #096703;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	z-index: 1;
+}
+
+.wumpus {
+	position: absolute;
+	z-index: 4;
+	top: 10px;
+	left: 10px;
+	color: #4d0707;
+}
+
+.hunter {
+	position: absolute;
+	z-index: 5;
+	top: 10px;
+	left: 13px;
+}
+
+.bat {
+	position: absolute;
+	z-index: 6;
+	top: 10px;
+	left: 10px;
+	color: #000000;
+}
+
+@media all and (min-width: 400px) {
+	#menu {
+		display: block !important;
+		width: 100%;
+		height: 5%;
+		padding: 0px 0px;
+		margin: 0px auto !important;
+		background-color: #000000;
+		color: #ffffff;
+	}
+
+	#menu div, #menu .btn {
+		height: 20px !important;
+		width: 15% !important;
+		padding: 5px !important;
+		float: left;
+		background-color: #000000;
+	}
+
+}
+
+</style>
+</head>
+<body>
+<div id="menu" class="row cell75 center" >
+<div class="right" onclick= "wmp.menu()" style="display: none;">X</div>
+<div style="padding: 5%; font-weight: bold; margin-left: 10px;" >5x- Battleship</div> 
+
+<div class="btn" onclick="bat.fleet();">Place Fleet</div>
+<div class="btn" onclick="bat.init();">Start Game</div>
+<div class="btn" onclick="bat.setup();">Difficulty</div>
+<div class="btn" onclick="bat.help();">Help</div>
+</div>
+
+<!-- game screen -->
+
+<div class="center row" style="width: 95%">
+<div class="cell30 center">
+	<h3 style="text-align: center;"> My Fleet </h3>
+	<div id="cave">
+		<div id="tile0" class="cavern"></div>
+		<div id="tile1" class="cavern"></div>
+		<div id="tile2" class="cavern"></div>
+		<div id="tile3" class="cavern"></div>
+		<div id="tile4" class="cavern"></div>
+		<div id="tile5" class="cavern"></div>
+		<div id="tile6" class="cavern"></div>
+		<div id="tile7" class="cavern"></div>
+		<div id="tile8" class="cavern"></div>
+		<div id="tile9" class="cavern"></div>
+		<div id="tile10" class="cavern"></div>
+		<div id="tile11" class="cavern"></div>
+		<div id="tile12" class="cavern"></div>
+		<div id="tile13" class="cavern"></div>
+		<div id="tile14" class="cavern"></div>
+		<div id="tile15" class="cavern"></div>
+		<div id="tile16" class="cavern"></div>
+		<div id="tile17" class="cavern"></div>
+		<div id="tile18" class="cavern"></div>
+		<div id="tile19" class="cavern"></div>
+		<div id="tile20" class="cavern"></div>
+		<div id="tile21" class="cavern"></div>
+		<div id="tile22" class="cavern"></div>
+		<div id="tile23" class="cavern"></div>
+		<div id="tile24" class="cavern"></div>
+	</div> 
+	<br />
+	 
+</div>
+<div id="control" class="cell30 center">
+	<h3 style="text-align: center;"> Enemy Fleet </h3>
+	<div id="cave">
+		<div id="tile0" class="cavern"></div>
+		<div id="tile1" class="cavern"></div>
+		<div id="tile2" class="cavern"></div>
+		<div id="tile3" class="cavern"></div>
+		<div id="tile4" class="cavern"></div>
+		<div id="tile5" class="cavern"></div>
+		<div id="tile6" class="cavern"></div>
+		<div id="tile7" class="cavern"></div>
+		<div id="tile8" class="cavern"></div>
+		<div id="tile9" class="cavern"></div>
+		<div id="tile10" class="cavern"></div>
+		<div id="tile11" class="cavern"></div>
+		<div id="tile12" class="cavern"></div>
+		<div id="tile13" class="cavern"></div>
+		<div id="tile14" class="cavern"></div>
+		<div id="tile15" class="cavern"></div>
+		<div id="tile16" class="cavern"></div>
+		<div id="tile17" class="cavern"></div>
+		<div id="tile18" class="cavern"></div>
+		<div id="tile19" class="cavern"></div>
+		<div id="tile20" class="cavern"></div>
+		<div id="tile21" class="cavern"></div>
+		<div id="tile22" class="cavern"></div>
+		<div id="tile23" class="cavern"></div>
+		<div id="tile24" class="cavern"></div>
+	</div>
+</div>
+
+
+<div id="console" class="row cell75">
+<div id="log"></div>
+	<script>
+	// andi
+	// Written by Kendall Purser
+	// 2014.06.01
+
+
+	// ***get function***
+	var a = { 
+		get : function (id) {
+			var temp_id = document.getElementById(id);
+			return temp_id;
+		},
+		// ***log function***
+		log : function (msg) {
+			a.show("console");
+			var temp = a.get("log").innerHTML;
+			a.get("log").innerHTML = msg + "<br /> " + temp;
+		} ,
+
+		// ***css interactoons***
+		css : function (id,key_val) {
+			for (i in key_val) {
+				a.get(id).style[i] = key_val[i];
+			}
+		},
+		show : function (id) {
+			a.css(id, {"display":"block"});
+		},
+		hide : function (id) {
+			a.css(id, {"display":"none"});
+		} 
+	};
+	// ***browser errors***
+	window.onerror = function ( msg, url, num, col, obj) {
+	a.log("Error- " + msg + "(" + num + ", " + col + ") <br /> " + url + " " + obj);
+	};
+
+//
+//	Wumpus 2014.12.23
+//	Kendall Purser
+//	For fun!
+//
+	var wmp = {
+		menu_vis : 0,
+		difficulty : 0, // 0= easy, 1= medium, 2= hard
+		pits : 2,
+		blood : 2,
+		bats : 2,
+		tiles : [],
+		location : -1,
+		template : '<div id="tile{{num}}" class="cavern">\r\n<div class="bat">&Psi;</div>\r\n<div class="hunter">&spades;</div>\r\n		<div class="wumpus">&Omega;</div>\r\n	<div class="slime"></div>\r\n<div class="blood"></div>\r\n<div class="pit"></div>\r\n		<div class="cavern2 cavern_a">\r\n	<div class="corner ne"></div>\r\n<div class="corner sw"><div class="wall sw_wall"></div>\r\n	</div>\r\n</div>\r\n<div class="cavern2 cavern_b">\r\n<div class="corner nw"></div>\r\n<div class="corner se">\r\n<div class="wall sw_wall"></div>\r\n</div>\r\n</div>\r\n</div>',
+		move : function (direction) {
+
+		},
+		shoot: function (direction) {
+
+
+		},
+		init : function () {
+			wmp.load();
+			wmp.shuffle();
+			wmp.update_ui();
+		},
+		load : function () {
+			// generate and load tiles
+			
+
+			//update ui
+		},
+		shuffle : function () {
+
+		},
+		update_ui : function () {
+
+		},
+		menu : function () {
+			// simple menu toggle
+			if (wmp.menu_vis === 0) {
+				a.show("menu");
+				wmp.menu_vis = 1;
+			} else {
+				a.hide("menu");
+				wmp.menu_vis = 0;
+			}
+		},
+		show : function () {
+
+		},
+		help : function () {
+
+		},
+		win : function () {
+
+		},
+		lose : function () {
+
+		}	
+	};
+
+	</script>
+</body>
+</html>
