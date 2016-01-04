@@ -1,0 +1,271 @@
+<!DOCTYPE html>  
+<html>
+<head>
+	<title>Territory</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+	/*
+		Color		Hex#
+		----------------------------------------------
+		red	 		color: 	#c77a7e;
+		orange		color:	#e2b896;
+		yellow		color:	#eef2bf;
+		green		color:	#cadfc6;
+		blue		color:	#81aad5;
+		-----------------------------------------------
+		purple		color:	#cfc0d3;
+		gray		color:	#efefec;
+		white		color:	#ffffff;
+
+	*/
+
+	.a {
+		/*red*/
+		background-color: #c77a7e;
+	}
+	.b {
+		/*orange*/
+		background-color: #e2b896;
+	}
+	.c {
+		/*yellow*/
+		background-color: #eef2bf;
+	}
+	.d {
+		/*green*/
+		background-color: #cadfc6;
+	}
+	.e {
+		/*blue*/
+		background-color: #81aad5;
+	}
+	#gameboard {
+		border: 1px solid black;
+		width: 300px;
+		height: 300px;
+	}
+
+	#gameboard div {
+		border: 1px solid black;
+		width: 58px;
+		height: 58px;
+		float: left;
+	}
+
+	.nav {
+		height: 50px;
+		margin-bottom: 50px;
+	}
+
+	.btn {
+		background-color: #e7e7e7;
+		padding: 10px;
+		text-align: center;
+		font-size: 20px;
+		float: left;
+		margin: 5px;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<div id="title"><h3>Territory</h3></div>
+		<div id="new_game" class="btn" onclick="ter.init();">Start Game</div>
+	</div>
+	
+		<div id="gameboard">
+			<!-- write web app here -->
+			<div class="rooms" id="room0"></div>
+			<div class="rooms" id="room1"></div>
+			<div class="rooms" id="room2"></div>
+			<div class="rooms" id="room3"></div>
+			<div class="rooms" id="room4"></div>
+			<div class="rooms" id="room5"></div>
+			<div class="rooms" id="room6"></div>
+			<div class="rooms" id="room7"></div>
+			<div class="rooms" id="room8"></div>
+			<div class="rooms" id="room9"></div>
+			<div class="rooms" id="room10"></div>
+			<div class="rooms" id="room11"></div>
+			<div class="rooms" id="room12"></div>
+			<div class="rooms" id="room13"></div>
+			<div class="rooms" id="room14"></div>
+			<div class="rooms" id="room15"></div>
+			<div class="rooms" id="room16"></div>
+			<div class="rooms" id="room17"></div>
+			<div class="rooms" id="room18"></div>
+			<div class="rooms" id="room19"></div>
+			<div class="rooms" id="room20"></div>
+			<div class="rooms" id="room21"></div>
+			<div class="rooms" id="room22"></div>
+			<div class="rooms" id="room23"></div>
+			<div class="rooms" id="room24"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div id="log"></div>
+	</div>
+<script>
+	// andi 0.1 - mobile dev toolkit
+	// Written by Kendall Purser
+	// 2014.06.01
+
+	// ***catch browser errors and log them
+	window.onerror = function (msg, url, num, col, obj) {
+		a.log("ERR(" + num + ", " + col + ") " + msg + "<br />" + url + " " + obj);
+	};
+	
+	// ***JavaScript API***
+	var a = {
+		get : function (id) {
+			var temp_id = document.getElementById(id);
+			return temp_id;
+		},
+		apnd : function (id, x) {
+			a.get(id).innerHTML = get(id).innerHTML + x;
+		},
+		ppnd : function (id, x) {
+			a.get(id).innerHTML = x + get(id).innerHTML;
+		},
+		log : function (msg) {
+			a.show("log");
+			var temp = a.get("log").innerHTML;
+			a.get("log").innerHTML = temp + "<br /> " + msg;
+		},
+		css : function (id,key_val) {
+			for (i in key_val) {
+				a.get(id).style[i] = key_val[i];
+			}
+		},
+		show : function (id) {
+			a.css(id, {"display":"block"});
+		},
+		hide : function (id) {
+			a.css(id, {"display":"none"});
+		}
+	};
+
+	// Territory game scripts
+	var ter = {
+		turn : "",
+		round : 0,
+		select_a : "",
+		select_b : "",
+		country : [
+			// owner, child, difficulty
+			["a",-1,0],
+			["a",0,0],
+			["a",1,0],
+			["a",2,0],
+			["a",3,0],
+			["b",-1,0],
+			["b",-1,0],
+			["b",-1,0],
+			["b",-1,0],
+			["b",-1,0],
+			["c",-1,0],
+			["c",-1,0],
+			["c",-1,0],
+			["c",-1,0],
+			["c",-1,0],
+			["d",-1,0],
+			["d",-1,0],
+			["d",-1,0],
+			["d",-1,0],
+			["d",-1,0],
+			["e",-1,0],
+			["e",-1,0],
+			["e",-1,0],
+			["e",-1,0],
+			["e",-1,0]
+		],
+		neighbor_check : function () {
+			// helps define countries
+			// + or - 1 or 5
+			// && 0 < 24
+		},
+		// Game controls
+		init : function () {
+			// generate map (update colors)
+			// country list
+			// place capital
+			// write child
+			// update 
+			ter.ui();
+		},
+		map_gen : function () {
+			// shuffle ter.owner
+
+		},
+		// Per Turn controls
+		def_country : function () {
+			// define the size and number of countries
+		},
+		capital : function () {
+			// define the capital based on the first territory in the country
+		},
+		economy : function () {
+			// calculate the income and expenses for each country
+		},
+		tree : function () {
+			// randomly generate trees every so many rounds
+			// get vacant squares 
+			// generate random number
+		},
+		ui : function () {
+			var count = 0;
+			console.log (ter.country.length);
+			for (i = 0; i < ter.country.length; i +=1) {
+				a.get("room" + count).className = "rooms " + ter.country[i][0];
+				if (ter.country[i][1] === 1 || ter.country[i][1] === 3) {
+					a.get("room" + count).innerHTML = "<span class='red'>" + ter.country[i][1] + "</span>";
+				}else {
+					a.get("room" + count).innerHTML = ter.country[i][1];
+				}
+				count +=1;
+
+			}
+			
+		},
+		// Player controls
+		build: function () {
+		
+		},
+		recruit : function () {
+		
+		},
+		select : function () {
+		
+		},
+		target : function () {
+		
+		},
+		move : function () {
+		
+		},
+		// info
+		rules : function () {
+			a.show("rules");
+		},
+		save : function () {
+		
+		},
+		load : function () {
+		
+		},
+		// computer players
+		passive_ai : function () {
+		
+		},
+		moderate_ai : function () {
+		
+		},
+		aggressive_ai : function () {
+		
+		}
+	};
+</script>
+</body>
+</html>
