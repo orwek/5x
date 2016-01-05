@@ -50,6 +50,9 @@
 		width: 58px;
 		height: 58px;
 		float: left;
+		text-align: center;
+		font-size: 30px;
+		line-height: 55px;
 	}
 
 	.nav {
@@ -155,31 +158,31 @@
 		select_b : "",
 		country : [
 			// owner, child, difficulty
-			["a",-1,0],
 			["a",0,0],
-			["a",1,0],
-			["a",2,0],
-			["a",3,0],
-			["b",-1,0],
-			["b",-1,0],
-			["b",-1,0],
-			["b",-1,0],
-			["b",-1,0],
-			["c",-1,0],
-			["c",-1,0],
-			["c",-1,0],
-			["c",-1,0],
-			["c",-1,0],
-			["d",-1,0],
-			["d",-1,0],
-			["d",-1,0],
-			["d",-1,0],
-			["d",-1,0],
-			["e",-1,0],
-			["e",-1,0],
-			["e",-1,0],
-			["e",-1,0],
-			["e",-1,0]
+			["a",0,0],
+			["a",0,0],
+			["a",0,0],
+			["a",0,0],
+			["b",0,0],
+			["b",0,0],
+			["b",0,0],
+			["b",0,0],
+			["b",0,0],
+			["c",0,0],
+			["c",0,0],
+			["c",0,0],
+			["c",0,0],
+			["c",0,0],
+			["d",0,0],
+			["d",0,0],
+			["d",0,0],
+			["d",0,0],
+			["d",0,0],
+			["e",0,0],
+			["e",0,0],
+			["e",0,0],
+			["e",0,0],
+			["e",0,0]
 		],
 		neighbor_check : function () {
 			// helps define countries
@@ -189,15 +192,24 @@
 		// Game controls
 		init : function () {
 			// generate map (update colors)
-			// country list
+			ter.map_gen(ter.country);
+			// define countries
 			// place capital
-			// write child
+			// econ * 5
 			// update 
 			ter.ui();
 		},
-		map_gen : function () {
-			// shuffle ter.owner
+		map_gen : function (shuffle_me) {
+			// shuffle ter.country
+			for (i = 0; i < shuffle_me.length; i += 1){
+				var shuffle1, random;
+				random = Math.floor(Math.random()* shuffle_me.length);
 
+				// value shuffling
+				shuffle1 = shuffle_me[i];
+				shuffle_me[i] = shuffle_me[random]
+				shuffle_me[random] = shuffle1
+			}
 		},
 		// Per Turn controls
 		def_country : function () {
@@ -205,6 +217,8 @@
 		},
 		capital : function () {
 			// define the capital based on the first territory in the country
+			var cap_list : [];
+
 		},
 		economy : function () {
 			// calculate the income and expenses for each country
@@ -216,6 +230,7 @@
 		},
 		ui : function () {
 			var count = 0;
+			var i = 0;
 			console.log (ter.country.length);
 			for (i = 0; i < ter.country.length; i +=1) {
 				a.get("room" + count).className = "rooms " + ter.country[i][0];
@@ -225,9 +240,7 @@
 					a.get("room" + count).innerHTML = ter.country[i][1];
 				}
 				count +=1;
-
 			}
-			
 		},
 		// Player controls
 		build: function () {
@@ -237,7 +250,12 @@
 		
 		},
 		select : function () {
-		
+		// highlight border
+
+		// if capital, show country stats
+
+		// if soldier, highlight squares that can be attacked and give them the "target" binding
+
 		},
 		target : function () {
 		
