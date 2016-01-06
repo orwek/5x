@@ -184,16 +184,16 @@
 			["e",0,0],
 			["e",0,0]
 		],
-		neighbor_check : function () {
-			// helps define countries
-			// + or - 1 or 5
-			// && 0 < 24
-		},
+		neighbors : [],
+		states : [],
 		// Game controls
 		init : function () {
 			// generate map (update colors)
 			ter.map_gen(ter.country);
-			// define countries
+			// find neighbors
+			ter.neighbor_build(i);
+			// define states
+			ter.state();
 			// place capital
 			// econ * 5
 			// update 
@@ -207,18 +207,49 @@
 
 				// value shuffling
 				shuffle1 = shuffle_me[i];
-				shuffle_me[i] = shuffle_me[random]
-				shuffle_me[random] = shuffle1
+				shuffle_me[i] = shuffle_me[random];
+				shuffle_me[random] = shuffle1;
 			}
 		},
 		// Per Turn controls
-		def_country : function () {
-			// define the size and number of countries
+		state : function () {
+			// define the size and number of states
+			var state_array = [];
+			// run through neighbors, if same owner, list in same state
+			for (i = 0; i < ter.neighbors.length; i += 1) {
+				for (j = 0; j < ter.neighbors[i].length; j +=1) {
+					ter.state[i]
+				}
+			}
+			ter.capital(state_array);
 		},
-		capital : function () {
+		neighbor_build : function () {
+			// helps define states
+			// + or - 1 or 5
+			// && 0 < 24
+			for (i = 0; i < ter.country.length; i += 1) {
+				var tmp_results = [];
+				if (i - 1 > -1) {
+					tmp_results.push(i - 1);
+				}
+				if (i + 1 < 25) {
+					tmp_results.push(i +1);
+				}
+				if (i - 5 > -1) {
+					tmp_results.push(i - 5);
+				}
+				if (i + 5 < 25 ) {
+					tmp_results.push(i + 5);
+				}
+				console.log(tmp_results);
+				ter.neighbors[i] = tmp_results;
+			}
+		},
+		capital : function (cap_list) {
 			// define the capital based on the first territory in the country
-			var cap_list : [];
-
+			if (cap_list.length > 1) {
+				country[cap_list[0]].child = 3;
+			}
 		},
 		economy : function () {
 			// calculate the income and expenses for each country
@@ -231,7 +262,6 @@
 		ui : function () {
 			var count = 0;
 			var i = 0;
-			console.log (ter.country.length);
 			for (i = 0; i < ter.country.length; i +=1) {
 				a.get("room" + count).className = "rooms " + ter.country[i][0];
 				if (ter.country[i][1] === 1 || ter.country[i][1] === 3) {
