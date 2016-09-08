@@ -33,6 +33,7 @@ Games in Development
 
 Games Completed
 --
+<a href="http://orwek.github.io/5x/d6roller.html">d6roller</a>
+<a href="http://orwek.github.io/5x/spyhunt.html">Spy Hunt</a>
 
-(None)
 
