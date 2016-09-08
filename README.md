@@ -33,8 +33,8 @@ Games in Development
 
 Games Completed
 --
--<a href="http://orwek.github.io/5x/d6roller.html">d6roller</a>
+-<a href="http://orwek.github.io/5x/d6roller.html">d6roller</a> A web based dice rolling app.
 
--<a href="http://orwek.github.io/5x/spyhunt.html">Spy Hunt</a>
+-<a href="http://orwek.github.io/5x/spyhunt.html">Spy Hunt</a> Locate all 3 spies in the city before you run out of agents.
 
 
