@@ -161,7 +161,7 @@
 		
 		<script>
 			var reset = function () {
-				 get("total").innerHTML = 0; 
+				 get("total").innerHTML = ""; 
 				 var t = window.setTimeout( function () {
 				 // a pause
 				 return;
@@ -178,7 +178,7 @@
 				for ( i = 0; i < results.length; i += 1) {
 					total += results[i];
 				}
-				get("total").innerHTML = 0; 
+				get("total").innerHTML = "&nbsp;"; 
 				get("results").innerHTML = "Rolling...";
 				setTimeout(function () {
 					get("results").innerHTML = results.join(",");
