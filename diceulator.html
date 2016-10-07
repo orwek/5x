@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+	 <title>d6 Roller</title>
+	 <meta name="viewport" content= "width=device-width,initial-scale=1.0" />
+<style type="text/css">
+	 	body {
+		 	margin: 0;
+	 		padding: 0;
+	 		background-color: #999999;
+	 	}
+	 	.center {
+	 		margin: auto;
+	 	}
+	 	.row {
+	 		width: auto;
+	 		clear: both;
+	 		margin-bottom: 5%;
+	 	}
+	 	.btn {
+	 		background-color: #e7e7e7;
+	 		padding: 15%;
+	 		text-align: center;
+	 		font-size: 30px;
+	 		float: left;
+	 		margin: 10px;
+	 		border-radius: 5px;
+	 		border-bottom: 2px solid #000000;
+	 		border-right: 2px solid #000000;
+	 		cursor: pointer;
+	 	}
+	 	 #log {
+	 		color: red;
+	 		margin : 15px;
+	 		padding: 10px;
+	 		font-size : 20px;
+	 		height : 150px;
+	 		overflow : scroll;
+	 		background-color : #e7e7e7;
+	 	}
+	 	.cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
+	 		float: none;
+	 		width: 94%;
+	 		padding: 3%;
+	 	}
+	 	.cell {
+	 		clear: both;
+	 	}
+		.half {
+			width: 35% !important;
+			float: left;
+		}
+		.third {
+			width: 27% !important;
+			float: left;
+		}
+		.blue {
+			color: #ffffff;
+			background-color: #003366;
+		}
+@media all and (min-width: 450px) {
+	.cell {
+		float : left;
+	}
+
+	.cell20 {
+		float: left;
+		width: 14%;
+		padding: 3%;
+	}
+
+	.cell25 {
+		float: left;
+		width: 19%;
+		padding: 3%;
+	}
+	.cell30 {
+		float: left;
+		width: 24%;
+		padding: 3%;
+	}
+	 .cell40 {
+		float: left;
+		width: 34%;
+		padding: 3%;
+	}
+	.cell50 {
+		float: left;
+		width: 44%;
+		padding: 3%;
+	}
+	.cell60 {
+		float: left;
+		width: 54%;
+		padding: 3%;
+	}
+	.cell75 {
+		float: left;
+		width: 69%;
+		padding: 3%;
+	}
+	#dice_stage {
+		width: 600px !important;
+	}
+}
+	 	#dice_stage {
+	 		width: auto;
+	 	}
+	 	#results {
+	 		height : 30px;
+	 		font-size : 25px;
+	 		margin-left: 10px;
+	 		margin-bottom: 0px;
+	 	}
+	 	#total {
+	 		font-size: 60px;
+	 		color: #666666;
+	 		background-color: #e7e7e7;
+	 		border: 1px solid #666666;
+	 		width: 90%;
+	 		height: 80%;
+	 		text-align: center;
+	 		padding : 15px;
+	 		margin: 0px auto;
+	 		border-radius: 5px;
+	 	}
+	 	#console {
+	 		display : none;
+	 	}
+	 	.con {
+	 		font-size : 30px;
+	 		float : left;
+	 		height : 50px;
+	 	}
+	 	.right {
+	 		float: right;
+	 	}
+	 	.left {
+	 		float: left;
+	 	}
+	 	.clear {
+	 		clear: both;
+	 	}
+</style>
+</head>
+<body>
+	<div id="dice_stage" class="center" style="width: 70%">
+		<div  class="row center">
+			<div  class="cell80" >
+				<div  class="cell75" style="background-color: #ffffff; border-radius: 5px; float: right;">
+					<div  id="results"  class="cell">
+					</div>
+					<div  id="total"  class="cell">
+							&nbsp;
+					</div>
+				</div>
+				<div  class="btn cell20 blue" onClick="dice.set_d(4);">
+					d4
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<div  class="btn cell20 blue" onClick="dice.set_d(6);">
+					d6
+				</div>
+				
+				<br style="clear: both;"/>
+				
+
+				<div  class="btn cell20 blue" onClick="dice.set_d(8);">
+					d8
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(1);">
+					1
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(2);">
+					2
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(3);">
+					3
+				</div>
+				<br style="clear: both;"/>
+
+
+				
+				<div  class="btn cell20 blue" onClick="dice.set_d(10);">
+					d10
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(4);">
+					4
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(5);">
+					5
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(6);">
+					6
+				</div>
+
+				<br style="clear: both;"/>
+
+
+				
+				<div  class="btn cell20 blue" onClick="dice.set_d(12);">
+					d12
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(7);">
+					7
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(8);">
+					8
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(9);">
+					9
+				</div>
+				<br style="clear: both;"/>
+
+
+			 	
+				<div  class="btn cell20 blue" onClick="dice.set_d(20);">
+					d20
+				</div>
+				<div  class="btn cell20" onClick="dice.set_num(10);">
+					10
+				</div>
+				<div  class="btn cell40" style="background-color: red;" onClick="dice.roll();">
+					Roll
+				</div>
+
+				<br style="clear: both;"/>
+
+			</div>
+		</div>
+		
+		
+		<script>
+			var dice ={
+				d: 20,
+				num: 1,
+				d_list: ["d4","d6","d8","d10","d12","d20"],
+				num_list: [],
+				reset: function () {
+					get("total").innerHTML = ""; 
+					var t = window.setTimeout( function () {
+					// a pause
+					return;
+					}, 2000);			 
+				},
+				roll : function () {
+					var temp = 0, results = [], total = 0, i = 0;
+					
+					for ( i = 0; i < dice.num; i += 1) {
+						temp = Math.floor(Math.random() * dice.d) + 1;
+						results.push(temp);
+					}
+					i = 0;
+					for ( i = 0; i < results.length; i += 1) {
+						total += results[i];
+					}
+					get("total").innerHTML = "&nbsp;"; 
+					get("results").innerHTML = "Rolling...";
+					setTimeout(function () {
+						get("results").innerHTML = results.join(",");
+						get("total").innerHTML = total;
+					}, 300);
+				},
+				set_d : function (d_in) {
+					dice.d = d_in;
+				},
+				set_num : function (num_in) {
+					dice.num = num_in;
+				}
+			};
+</script>
+<div  id="console"  class="row cell75">
+	<div  id="log">
+	</div>
+</div>
+<script>
+// andi
+// Written by Kendall Purser
+// 2014.06.01
+
+// ***get function***
+	var get = function (id) {
+		var temp_id = document.getElementById(id);
+		return temp_id;
+	}
+// ***log function***
+	var log = function (msg) {
+		show("console");
+		var temp = get("log").innerHTML;
+				 get("log").innerHTML = msg + "<br /> " + temp;
+			} 
+// ***browser errors***
+	window.onerror = function ( msg, url, num, col, obj) {
+		log("Error- " + msg + "(" + num + ", " + col + ") <br /> " + url + " " + obj);
+	}
+// ***css interactoons***
+			css = function (id,key_val) {
+				for (i in key_val) {
+					get(id).style[i] = key_val[i];
+				}
+			};
+			show = function (id) {
+				css(id, {"display":"block"});
+			};
+			hide = function (id) {
+				 css(id, {"display":"none"});
+			} ;
+	// *** console ***
+			console = function () {
+				var x = get("c_in").value;
+				log(x);
+			}
+		</script>
+	 </body>
+ </html>
