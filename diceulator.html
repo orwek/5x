@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  <html>
  <head>
-	 <title>d6 Roller</title>
+	 <title>Diceulater for RPGs</title>
 	 <meta name="viewport" content= "width=device-width,initial-scale=1.0" />
 <style type="text/css">
 	 	body {
@@ -141,6 +141,14 @@
 	 	.clear {
 	 		clear: both;
 	 	}
+	 	.d_select {
+	 		color: #003366;
+	 		background-color: #ffffff;
+	 	}
+	 	.num_select {
+	 		color: #e7e7e7;
+	 		background-color: #000000;
+	 	}
 </style>
 </head>
 <body>
@@ -154,7 +162,7 @@
 							&nbsp;
 					</div>
 				</div>
-				<div  class="btn cell20 blue" onClick="dice.set_d(4);">
+				<div id="d4" class="btn cell20 blue" onClick="dice.set_d(4);">
 					d4
 				</div>
 				<br />
@@ -162,39 +170,39 @@
 				<br />
 				<br />
 				<br />
-				<div  class="btn cell20 blue" onClick="dice.set_d(6);">
+				<div id="d6" class="btn cell20 blue" onClick="dice.set_d(6);">
 					d6
 				</div>
 				
 				<br style="clear: both;"/>
 				
 
-				<div  class="btn cell20 blue" onClick="dice.set_d(8);">
+				<div id="d8" class="btn cell20 blue" onClick="dice.set_d(8);">
 					d8
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(1);">
+				<div id="num1" class="btn cell20" onClick="dice.set_num(1);">
 					1
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(2);">
+				<div id="num2" class="btn cell20" onClick="dice.set_num(2);">
 					2
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(3);">
+				<div id="num3" class="btn cell20" onClick="dice.set_num(3);">
 					3
 				</div>
 				<br style="clear: both;"/>
 
 
 				
-				<div  class="btn cell20 blue" onClick="dice.set_d(10);">
+				<div id="d10" class="btn cell20 blue" onClick="dice.set_d(10);">
 					d10
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(4);">
+				<div id="num4" class="btn cell20" onClick="dice.set_num(4);">
 					4
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(5);">
+				<div id="num5" class="btn cell20" onClick="dice.set_num(5);">
 					5
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(6);">
+				<div id="num6" class="btn cell20" onClick="dice.set_num(6);">
 					6
 				</div>
 
@@ -202,26 +210,26 @@
 
 
 				
-				<div  class="btn cell20 blue" onClick="dice.set_d(12);">
+				<div id="d12" class="btn cell20 blue" onClick="dice.set_d(12);">
 					d12
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(7);">
+				<div id="num7" class="btn cell20" onClick="dice.set_num(7);">
 					7
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(8);">
+				<div id="num8" class="btn cell20" onClick="dice.set_num(8);">
 					8
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(9);">
+				<div id="num9" class="btn cell20" onClick="dice.set_num(9);">
 					9
 				</div>
 				<br style="clear: both;"/>
 
 
 			 	
-				<div  class="btn cell20 blue" onClick="dice.set_d(20);">
+				<div id="d20" class="btn cell20 blue" onClick="dice.set_d(20);">
 					d20
 				</div>
-				<div  class="btn cell20" onClick="dice.set_num(10);">
+				<div id="num10" class="btn cell20" onClick="dice.set_num(10);">
 					10
 				</div>
 				<div  class="btn cell40" style="background-color: red;" onClick="dice.roll();">
@@ -239,7 +247,7 @@
 				d: 20,
 				num: 1,
 				d_list: ["d4","d6","d8","d10","d12","d20"],
-				num_list: [],
+				num_list: [1,2,3,4,5,6,7,8,9,10],
 				reset: function () {
 					get("total").innerHTML = ""; 
 					var t = window.setTimeout( function () {
@@ -267,9 +275,21 @@
 				},
 				set_d : function (d_in) {
 					dice.d = d_in;
+					// show which die is selected
+					var i = 0;
+					for (i = 0; i < dice.d_list.length; i += 1){
+						get(dice.d_list[i]).className = "btn cell20 blue";
+					}
+					get("d" + d_in).className = "btn cell20 blue d_select";
 				},
 				set_num : function (num_in) {
 					dice.num = num_in;
+					// show which number is selected
+					var i = 0;
+					for (i = 0; i < dice.num_list.length; i += 1){
+						get("num" + dice.num_list[i]).className = "btn cell20";
+					}
+					get("num" + num_in).className = "btn cell20 num_select";
 				}
 			};
 </script>
