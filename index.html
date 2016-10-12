@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ 	<meta charset="UTF-8">
+	 <title>5X: Javascript Games</title>
+	 <meta name="viewport" content= "width=device-width,initial-scale=1.0" />
+<style type="text/css">
+	 	body {
+		 	margin: 0;
+	 		padding: 0;
+	 	}
+	 	.center {
+	 		margin: auto;
+	 	}
+	 	#nav {
+	 		color: #ffffff;
+	 		background-color: #000000;
+	 		width: auto;
+	 		height: 20px;
+	 		padding: 5px;
+	 		font-size: 20px;
+	 		margin-bottom: 10px;
+	 		position: relative;
+	 		top:0px;
+	 	}
+
+	 	#nav a {
+	 		color: #ffffff;
+	 		text-decoration: none;
+	 	}
+	 	.row {
+	 		width: auto;
+	 		clear: both;
+	 		margin-bottom: 5%;
+	 	}
+	 	.btn {
+	 		background-color: #e7e7e7;
+	 		color: #000000;
+	 		padding: 2%;
+	 		text-align: center;
+	 		font-size: 20px;
+	 		float: left;
+	 		margin: 10px;
+	 		border-radius: 5px;
+	 		border-bottom: 2px solid #000000;
+	 		border-right: 2px solid #000000;
+	 		cursor: pointer;
+	 		text-decoration: none;
+	 	}
+	 	 #log {
+	 		color: red;
+	 		margin : 15px;
+	 		padding: 10px;
+	 		font-size : 20px;
+	 		height : 150px;
+	 		overflow : scroll;
+	 		background-color : #e7e7e7;
+	 	}
+	 	.cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
+	 		float: none;
+	 		width: 94%;
+	 		padding: 3%;
+	 	}
+	 	.cell {
+	 		clear: both;
+	 	}
+	 	.half {
+	 		width: 45% !important;
+	 		float: left;
+	 	}
+		.third {
+			width: 35% !important;
+			float: left;
+		}
+		.quarter{
+			width: 18%;
+			float: left;
+		}
+@media all and (min-width: 500px) {
+	.cell {
+		float : left;
+	}
+
+	.cell25 {
+		float: left;
+		width: 19%;
+		padding: 3%;
+	}
+	.cell30 {
+		float: left;
+		width: 24%;
+		padding: 3%;
+	}
+	 .cell40 {
+		float: left;
+		width: 34%;
+		padding: 3%;
+	}
+	.cell50 {
+		float: left;
+		width: 44%;
+		padding: 3%;
+	}
+	.cell60 {
+		float: left;
+		width: 54%;
+		padding: 3%;
+	}
+	.cell75 {
+		float: left;
+		width: 69%;
+		padding: 3%;
+	}
+
+} /* /media */
+	 	#console {
+	 		display : none;
+	 	}
+	 	.con {
+	 		font-size : 30px;
+	 		float : left;
+	 		height : 50px;
+	 	}
+	 	.right {
+	 		float: right;
+	 	}
+	 	.left {
+	 		float: left;
+	 	}
+	 	.clear {
+	 		clear: both;
+	 	}
+
+	 	a {
+	 		cursor: pointer;
+	 	}
+
+</style>
+</head>
+<body> 
+
+<div id="nav">
+	<div style="float: left;"> 
+		<a href="http://orwek.github.io/5x">5X:</a> Javascript Games
+	</div>
+	<div style="float: right;">
+		<a href="http://paypal.me/KendallPurser">Donate</a>
+	</div>
+</div>
+
+<div class="row" style=" width: 600px; margin: 0px auto;">
+	<div class="cell50">
+		<h3>Completed Games</h3>
+		<a class="btn" href="spyhunt.html" target="_blank">Spyhunt</a> 
+		<br style="clear: both;"/>
+		Try to find all three spies in the city with your limited number of agents!
+		<br />
+		<br />
+		<a class="btn" href="rpgcalculator.html" target="_blank">RPG Calculator</a> 
+		<br style="clear: both;"/>
+		Tired of adding up all those dice? Let the RPG Calculator do the work for you. Select the type of die and how many you would like to roll and the calculator will do the rest!
+		<br />
+		<br />
+	</div>
+	<div class="cell50">
+		<h3>Games in Progress</h3>
+		<a class="btn" href="#" target="_blank">Hunt the Wumpus</a> 
+		<br style="clear: both;"/>
+		Classic Hunt the Wumpus game based on the TI 99/4a port of the game.
+		<br />
+		<br />
+		<a class="btn" href="#" target="_blank">Territory</a> 
+		<br style="clear: both;"/>
+		A territory control game similar to Slayer or Hex Slayer on Android and iphone.
+		<br />
+		<br />
+	</div>
+</div>
+
+</div>
+<div id="console"  class="row cell75">
+<div  id="log"></div>
+<script>
+// andi
+// Written by Kendall Purser
+// 2014.06.01
+
+
+// ***get function***
+	var a = { 
+		get : function (id) {
+		var temp_id = document.getElementById(id);
+		return temp_id;
+		},
+// ***log function***
+		log : function (msg) {
+			a.show("console");
+			var temp = a.get("log").innerHTML;
+			a.get("log").innerHTML = msg + "<br /> " + temp;
+		} ,
+
+// ***css interactoons***
+		css : function (id,key_val) {
+				for (i in key_val) {
+					a.get(id).style[i] = key_val[i];
+				}
+		},
+		show : function (id) {
+			a.css(id, {"display":"block"});
+		},
+		hide : function (id) {
+			 a.css(id, {"display":"none"});
+		} 
+	};
+	 // ***browser errors***
+	window.onerror = function ( msg, url, num, col, obj) {
+		a.log("Error- " + msg + "(" + num + ", " + col + ") <br /> " + url + " " + obj);
+	};
+
+</script>
+
+	 </body>
+ </html>
