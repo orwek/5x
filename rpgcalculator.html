@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  <html>
  <head>
-	 <title>Diceulater for RPGs</title>
+	 <title>RPG Calculator</title>
 	 <meta name="viewport" content= "width=device-width,initial-scale=1.0" />
 <style type="text/css">
 	 	body {
@@ -21,9 +21,9 @@
 	 		background-color: #e7e7e7;
 	 		padding: 15%;
 	 		text-align: center;
-	 		font-size: 30px;
+	 		font-size: 20px;
 	 		float: left;
-	 		margin: 10px;
+	 		margin: 3%;
 	 		border-radius: 5px;
 	 		border-bottom: 2px solid #000000;
 	 		border-right: 2px solid #000000;
@@ -46,6 +46,21 @@
 	 	.cell {
 	 		clear: both;
 	 	}
+	 	.cell20 {
+			float: left;
+			width: 14%;
+			padding: 2%;
+		}
+		.cell40 {
+			float: left;
+			width: 34%;
+			padding: 2%;
+		}
+		.cell75 {
+			float: left;
+			width: 69%;
+			padding: 2%;
+		}
 		.half {
 			width: 35% !important;
 			float: left;
@@ -58,7 +73,25 @@
 			color: #ffffff;
 			background-color: #003366;
 		}
-@media all and (min-width: 450px) {
+@media all and (min-width: 600px) {
+	.btn {
+ 		background-color: #e7e7e7;
+ 		padding: 15%;
+ 		text-align: center;
+ 		font-size: 30px;
+ 		float: left;
+ 		margin: 10px;
+ 		border-radius: 5px;
+ 		border-bottom: 2px solid #000000;
+ 		border-right: 2px solid #000000;
+ 		cursor: pointer;
+ 	}
+
+ 	.blue {
+		color: #ffffff;
+		background-color: #003366;
+	}
+
 	.cell {
 		float : left;
 	}
@@ -79,7 +112,7 @@
 		width: 24%;
 		padding: 3%;
 	}
-	 .cell40 {
+	.cell40 {
 		float: left;
 		width: 34%;
 		padding: 3%;
@@ -102,23 +135,42 @@
 	#dice_stage {
 		width: 600px !important;
 	}
+	#results {
+ 		height : 30px;
+ 		font-size : 25px;
+ 		margin-left: 10px;
+ 		margin-bottom: 0px;
+ 	}
+	#total {
+ 		font-size: 60px !important;
+ 		color: #666666;
+ 		background-color: #e7e7e7;
+ 		border: 1px solid #666666;
+ 		width: 90% !important;
+ 		height: 80%;
+ 		text-align: center;
+ 		padding : 15px;
+ 		margin: 0px auto;
+ 		border-radius: 5px;
+ 	}
 }
 	 	#dice_stage {
-	 		width: auto;
-	 	}
+			width: 300px;
+			margin: auto;
+		}
 	 	#results {
-	 		height : 30px;
-	 		font-size : 25px;
+	 		height : 20px;
+	 		font-size : 20px;
 	 		margin-left: 10px;
 	 		margin-bottom: 0px;
 	 	}
 	 	#total {
-	 		font-size: 60px;
+	 		font-size: 30px;
 	 		color: #666666;
 	 		background-color: #e7e7e7;
 	 		border: 1px solid #666666;
-	 		width: 90%;
-	 		height: 80%;
+	 		width: 80%;
+	 		height: 30%;
 	 		text-align: center;
 	 		padding : 15px;
 	 		margin: 0px auto;
@@ -149,6 +201,9 @@
 	 		color: #e7e7e7;
 	 		background-color: #000000;
 	 	}
+	 	.hide_phone {
+	 		display: none;
+	 	}
 </style>
 </head>
 <body>
@@ -165,11 +220,13 @@
 				<div id="d4" class="btn cell20 blue" onClick="dice.set_d(4);">
 					d4
 				</div>
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
+				<div class="hide_phone">
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+				</div>
 				<div id="d6" class="btn cell20 blue" onClick="dice.set_d(6);">
 					d6
 				</div>
@@ -180,7 +237,7 @@
 				<div id="d8" class="btn cell20 blue" onClick="dice.set_d(8);">
 					d8
 				</div>
-				<div id="num1" class="btn cell20" onClick="dice.set_num(1);">
+				<div id="num1" class="btn cell20 num_select" onClick="dice.set_num(1);">
 					1
 				</div>
 				<div id="num2" class="btn cell20" onClick="dice.set_num(2);">
@@ -226,7 +283,7 @@
 
 
 			 	
-				<div id="d20" class="btn cell20 blue" onClick="dice.set_d(20);">
+				<div id="d20" class="btn cell20 blue d_select" onClick="dice.set_d(20);">
 					d20
 				</div>
 				<div id="num10" class="btn cell20" onClick="dice.set_num(10);">
@@ -259,7 +316,7 @@
 					var temp = 0, results = [], total = 0, i = 0;
 					
 					for ( i = 0; i < dice.num; i += 1) {
-						temp = Math.floor(Math.random() * dice.d) + 1;
+						temp = Math.ceil(Math.random() * dice.d);
 						results.push(temp);
 					}
 					i = 0;
