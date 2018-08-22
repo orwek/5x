@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <title>Scorecard v0.1</title>
+ <meta charset="UTF-8"/>
+ <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+ <link rel="stylesheet" href="" type="text/css"/>
+
+  <style type= "text/css">
+/*
+andi 0.2 - mobile dev toolkit
+Written by Kendall Purser
+2015.03.04
+
+2016.02.11 (edit)
+
+*/
+
+/* Default styles (phone) */
+
+body {
+margin: 0px;
+padding: 0px;
+}
+
+.nav {
+width: auto;
+height: 25px;
+font-size: 20px;
+color: #ffffff;
+background-color: #000000;
+padding: 5px;
+}
+
+.nav a, .footer a {
+margin: 0px 10px;
+text-decoration: none
+color: #ffffff;
+}
+
+# links {
+z-index: 100;
+position: fixed;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+background-color: #000000;
+text-align: center;
+}
+
+#links a {
+display: block;
+margin: 10px;
+clear: both;
+}
+
+#links a:hover {
+text-decoration: underline;
+}
+
+.logo {
+height: 25px;
+float: left;
+}
+
+#menu {
+float: right;
+width: 30px;
+padding: 5px;
+margin-top: -5px;
+cursor: pointer;
+}
+
+#menu hr {
+margin: 5px 0px;
+}
+
+.footer {
+clear: both;
+width: auto;
+height: 50px;
+font-size: 14px;
+color: #ffffff;
+background-color: #000000;
+padding: 10px;
+text-align: center;
+}
+
+hr {
+clear:both;
+margin: 0px 5%;
+}
+
+/* grid styles */
+
+.center {
+margin: 5% auto;
+display: block;
+}
+
+.row {
+width: auto;
+clear: both;
+margin: 3% auto;
+}
+
+.btn {
+backgroun d-color: #e7e7e7;
+color: #333333;
+padding: 10px;
+text-align: center;
+font-size: 16px;
+float: left;
+margin: 10px;
+border-radius: 10px;
+text-decoration: none;
+cursor: pointer;
+}
+
+.btn:hover {
+background-color: #333333;
+color: #e7e7e7;
+}
+
+.drop_light {
+border-bottom: 3px solid #e7e7e7;
+border-right: 3px solid #e7e7e7;
+}
+
+.drop_dark {
+border-bottom: 2px solid #777777;
+border-right: 2px solid #777777;
+}
+
+.round {
+border-radius: 10px;
+}
+
+.circle {
+border-radius: 50%;
+overflow: hidden;
+}
+
+.hide_phone {
+display: none;
+}
+
+#log {
+color: red;
+display : none;
+margin-top : 15px;
+padding: 15px;
+font-size : 30px;
+height : 150px;
+overflow : scroll;
+background-color : #e7e7e7;
+border-radius: 30px;
+}
+
+.cell, .cell25, .cell30, .cell50, .cell60, .cell75 {
+float: none;
+width: auto;
+ 	padding: 3%;
+clear: both;
+}
+
+/* bigger than a phone */
+
+@media all and (min-width: 450px) {
+
+#links {
+display: block !important;
+float: right;
+background-color: none;
+height: 25px;
+width: auto;
+position: relative;
+}
+
+#links a {
+display: inline;
+}
+
+.show_phone {
+display: none !important;
+}
+
+.hide_phone {
+display: block;
+}
+
+.footer {
+text-align: left;
+}
+
+.right {
+float: right;
+margin-right: 10px;
+}
+
+.row img {
+margin-top: 10%;
+}
+
+.row {
+width: auto;
+clear: both;
+margin: 3% auto;
+}
+
+.cell {
+float: left;
+padding: 3%;
+clear: none;
+}
+
+.cell25 {
+width: 19%;
+}
+
+.cell30 {
+width: 24%;
+}
+
+.cell50 {
+width: 44%;
+}
+
+.cell60 {
+width: 54%;
+}
+
+.cell75 {
+width: 69%;
+}
+}
+
+@media all and (min-width: 1000px) {
+
+.row {
+width: 1000px;
+clear: both;
+margin: 3% auto;
+}
+
+.row img {
+margin-top: auto;
+}
+}
+
+</style>
+
+ <style type="text/css">
+
+ body {
+    padding: 0px;
+    margin: 0px;
+ }
+
+ #stage {
+    width: 300px;
+    height: 300px;
+    background-color: #e7e7e7;
+    border:1px solid black;
+    margin: 50px 10px 10px 10px;
+    overflow-y: scroll;
+ }
+
+input	.p_name{
+float: left;
+margin: 5px;
+width: 55px;
+}
+ </style>
+
+ </head>
+ <body>
+
+ <div style="width: auto; height: 25px; background-color: #000000; color: #ffffff; padding: 5px; margin-top: -20px;" >
+Scorecard v0.1 
+<a onclick="score.new_game();" style="float: right; cursor: pointer; margin-bottom: 0px;">New Game</a>
+ </div>
+<div style= "margin: 5px auto -10px auto; width: 300px;">
+ <input type="text" id="p1" size="4"  value="Player1" class= "p_name" />
+ <input type="text" id="p2" size="4"  value="Player2" class= "p_name" />
+ <input type="text" id="p3" size="4"  value="Player3" class= "p_name" />
+ <input type="text" id="p4" size="4"  value="Player4" class= "p_name" />
+</div>
+
+ <div id="stage" style="border:1px solid black; width: 300px; height: 300px; overflow-y: scroll; clear: both; margin: 0px auto;">0</div>
+
+ <div  id="log" style= "width: auto; height: 200px;"></div>
+
+ 
+
+ <script type="text/javascript">
+
+// andi 0.2 - mobile dev toolkit
+// Written by Kendall Purser
+// 2015.03.04
+
+// ***catch browser errors and log them
+
+window.onerror = function (msg, url, num, col, obj) {
+
+a.log("ERR(" + num + ", " + col + ") " + msg + "<br />" + url + " " + obj);
+
+};
+
+// ***JavaScript API***
+
+var a = {
+get : function (id) {
+var temp_id = document.getElementById(id);
+return temp_id;
+},
+
+apnd : function (id, x) {
+a.get(id).innerHTML = get(id).innerHTML + x;
+},
+
+ppnd : function (id, x) {
+a.get(id).innerHTML = x + get(id).innerHTML;
+},
+
+log : function (msg) {
+a.show("log");
+var temp = a.get("log").innerHTML;
+a.get("log").innerHTML = temp + "<br /> " + msg;
+},
+
+css : function (id,key_val) {
+for (i in key_val) {
+a.get(id).style[i] = key_val[i];
+}
+},
+
+show : function (id) {
+a.css(id, {"display":"block"});
+},
+
+hide : function (id) {
+a.css(id, {"display":"none"});
+},
+
+// localStorage functions
+
+save : function (key, value) {
+localStorage.setItem(key) = value;
+},
+
+load : function (key) {
+return localStorage.getItem(key);
+},
+
+clear : function (key) {
+localStorage.removeItem(key);
+},
+
+// responsive navigation
+nav_state : 0,
+menu_toggle : function () {
+if (a.nav_state === 0) {
+a.show("links");
+a.nav_state = 1;
+} else {
+a.hide("links");
+a.nav_state = 0;
+}
+}
+};
+
+// Scorekeeper version 0.1
+
+var score = {
+ 	player : [
+ 	[],
+ 	[],
+ 	[],
+ 	[]
+ 	],
+ 	template : [
+ 	"<a onclick=\" score.edit({{p}},{{n}})\">{{num}}</a><br />",
+ 	"<div id=\"{{p}}\"  style=\"width: 60px; float: left; border: 1px solid black; margin: 5px; text-align: center;\">{{scores}} <input size=\"3\" id=\"add_{{p1}}\" onblur=\"score.add({{p2}})\" type=\"tel\"/><br />{{total}}</div>",
+ 	],
+ 	new_game : function() {
+ 	score.player =  [[],[],[],[]];
+ 	score.ui();
+ 	},
+ 	add : function (p) {
+       var tmp = a.get("add_" + p).value;
+       if (tmp != "") {
+score.player[p].push(tmp);	 	
+}
+score.ui();
+ 	},
+ 	edit : function (p,index) {
+       var tmp = window.prompt("Edit score:",score.player[p][index]);
+       if (tmp != null) {
+ 	   score.player[p][index]= tmp;
+       }
+       score.ui();
+ 	},
+ 	total :function (p) {
+ 	var tmp_total = 0;
+ 	for (k = 0; k < score.player[p].length; k += 1) {
+ 	tmp_total = parseInt(tmp_total) + parseInt(score.player[p][k]);
+ 	}
+ 	return tmp_total;
+ 	},
+ 	ui : function () {
+ 	   var tmp_out = "";
+ 	   for (i = 0; i < score.player.length; i += 1) {
+ 	   	var tmp_scores = "";
+ 	      	for (j = 0; j < score.player[i].length; j += 1) {
+ 	      	// Scores for each player
+ 	        var tmp = score.template[0].replace("{{p}}", i);
+ 	        tmp = tmp.replace("{{n}}", j);
+ 	        tmp = tmp.replace("{{num}}",score.player[i][j]);
+ 	        tmp_scores += tmp;
+ 	      	}
+
+ 	      	// Write each player column
+ 	    var tmp_t = score.template[1].replace("{{p}}", "player_" + i);
+ 	    tmp_t =tmp_t.replace("{{p1}}", i);
+ 	    tmp_t =tmp_t.replace("{{p2}}", i);
+ 	    tmp_t =tmp_t.replace("{{scores}}", tmp_scores);
+ 	    tmp_t =tmp_t.replace("{{total}}", score.total(i));
+ 	    tmp_out += tmp_t;
+ 	    }
+a.get("stage").innerHTML = tmp_out;
+a.get("stage").scrollTop = a.get("add_1").offsetTop;
+}
+ 	};
+
+ 	score.new_game();
+</script>
+</body>
+ </html>
