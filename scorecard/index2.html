@@ -270,9 +270,13 @@ margin-top: auto;
 
 input	.p_name{
 float: left;
-margin: 5px;
+margin: auto;
 width: 55px;
-text-align: justify;
+display: inline-block;
+}
+.name_blocks {
+  width: 70px;
+  float: left;
 }
  </style>
 
@@ -283,13 +287,18 @@ text-align: justify;
 Scorecard v0.1 
 <a onclick="score.new_game();" style="float: right; cursor: pointer; margin-bottom: 0px;">New Game</a>
  </div>
-<div style= "margin: 5px auto 10px auto; width: 300px;">
- <input type="text" id="p1" size="5"  value="Player1" class= "p_name" />
- <input type="text" id="p2" size="5"  value="Player2" class= "p_name" />
- <input type="text" id="p3" size="5"  value="Player3" class= "p_name" />
- <input type="text" id="p4" size="5"  value="Player4" class= "p_name" />
+<div style= "margin: 5px auto 10px auto; width: 300px; padding-left: 15px">
+  <div class="name_blocks">
+   <input type="text" id="p1" size="5"  value="Player1" class= "p_name" />
+  </div><div class="name_blocks">
+   <input type="text" id="p2" size="5"  value="Player2" class= "p_name" />
+  </div><div class="name_blocks">
+   <input type="text" id="p3" size="5"  value="Player3" class= "p_name" />
+  </div><div class="name_blocks">
+   <input type="text" id="p4" size="5"  value="Player4" class= "p_name" />
+  </div>
 </div>
-
+<br />
  <div id="stage" style="border:1px solid black; width: 300px; height: 300px; overflow-y: scroll; clear: both; margin: 0px auto;">0</div>
 
  <div  id="log" style= "width: auto; height: 200px;"></div>
