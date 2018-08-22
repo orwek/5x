@@ -272,21 +272,22 @@ input	.p_name{
 float: left;
 margin: 5px;
 width: 55px;
+text-align: justify;
 }
  </style>
 
  </head>
  <body>
 
- <div style="width: auto; height: 25px; background-color: #000000; color: #ffffff; padding: 5px; margin-top: -20px;" >
+ <div style="width: auto; height: 25px; background-color: #000000; color: #ffffff; padding: 5px; margin-top: 0px;" >
 Scorecard v0.1 
 <a onclick="score.new_game();" style="float: right; cursor: pointer; margin-bottom: 0px;">New Game</a>
  </div>
-<div style= "margin: 5px auto -10px auto; width: 300px;">
- <input type="text" id="p1" size="4"  value="Player1" class= "p_name" />
- <input type="text" id="p2" size="4"  value="Player2" class= "p_name" />
- <input type="text" id="p3" size="4"  value="Player3" class= "p_name" />
- <input type="text" id="p4" size="4"  value="Player4" class= "p_name" />
+<div style= "margin: 5px auto 10px auto; width: 300px;">
+ <input type="text" id="p1" size="5"  value="Player1" class= "p_name" />
+ <input type="text" id="p2" size="5"  value="Player2" class= "p_name" />
+ <input type="text" id="p3" size="5"  value="Player3" class= "p_name" />
+ <input type="text" id="p4" size="5"  value="Player4" class= "p_name" />
 </div>
 
  <div id="stage" style="border:1px solid black; width: 300px; height: 300px; overflow-y: scroll; clear: both; margin: 0px auto;">0</div>
@@ -383,7 +384,7 @@ var score = {
  	],
  	template : [
  	"<a onclick=\" score.edit({{p}},{{n}})\">{{num}}</a><br />",
- 	"<div id=\"{{p}}\"  style=\"width: 60px; float: left; border: 1px solid black; margin: 5px; text-align: center;\">{{scores}} <input size=\"3\" id=\"add_{{p1}}\" onblur=\"score.add({{p2}})\" type=\"tel\"/><br />{{total}}</div>",
+ 	"<div id=\"{{p}}\"  style=\"width: 59px; float: left; border: 1px solid black; margin: 5px; text-align: center;\">{{scores}} <input size=\"3\" id=\"add_{{p1}}\" onblur=\"score.add({{p2}})\" type=\"tel\"/><br />{{total}}</div>",
  	],
  	new_game : function() {
  	score.player =  [[],[],[],[]];
